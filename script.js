@@ -1,46 +1,87 @@
-const botToken = "8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc";
-const chatId = "2105892713";
 
+
+const botToken = "YOUR_BOT_TOKEN";
+const chatId = "YOUR_CHAT_ID";
+
+let selectedIssue = "";
+
+// show vehicle
 const params = new URLSearchParams(window.location.search);
-const vehicle = params.get("v") || "Grand Vitara";
+const vehicle = params.get("v") || "Unknown";
 
 document.getElementById("vehicleText").innerText =
-  "Vehicle: " + vehicle;
+"Vehicle: " + vehicle;
 
-function sendAlert(issue) {
-  alert(issue);
+// select issue
+function selectIssue(btn, issue) {
 
-  var message =
-    "🚨 Vehicle Alert\n" +
-    "Vehicle: " + vehicle + "\n" +
-    "Issue: " + issue + "\n" +
-    "Time: " + new Date().toLocaleString();
+  document.querySelectorAll(".opt").forEach(b => {
+    b.classList.remove("active");
+  });
 
- fetch("https://api.telegram.org/bot8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc/sendMessage", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: "chat_id=" + encodeURIComponent(2105892713) + "&text=" + encodeURIComponent(message)
-})
-.then(function(response) {
-  return response.json();
-})
+  btn.classList.add("active");
 
-  .then(function(data) {
+  selectedIssue = issue;
+
+  const sendBtn = document.getElementById("sendBtn");
+  sendBtn.disabled = false;
+  sendBtn.classList.add("active");
+}
+
+// send message
+function sendAlert() {
+
+  if (!selectedIssue) return;
+
+  const message =
+`🚨 Vehicle Alert
+Vehicle: ${vehicle}
+Issue: ${selectedIssue}
+Time: ${new Date().toLocaleString()}`;
+
+  fetch("https://api.telegram.org/bot" + botToken + "/sendMessage", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body:
+      "chat_id=" + encodeURIComponent(chatId) +
+      "&text=" + encodeURIComponent(message)
+  })
+  .then(res => res.json())
+  .then(data => {
 
     if (data.ok) {
-      alert("Alert Sent Successfully");
+
+      showSuccess();
+
+      // reset after send
+      selectedIssue = "";
+      document.querySelectorAll(".opt").forEach(b => {
+        b.classList.remove("active");
+      });
+
+      const sendBtn = document.getElementById("sendBtn");
+      sendBtn.disabled = true;
+      sendBtn.classList.remove("active");
+
     } else {
-      alert("Telegram Error: " + data.description);
+      alert("Error: " + data.description);
     }
 
   })
-  .catch(function(error) {
+  .catch(err => {
     alert("Network Error");
-    console.log(error);
+    console.log(err);
   });
-
 }
-   
 
+// success screen
+function showSuccess() {
+  const box = document.getElementById("success");
+  box.style.display = "flex";
+
+  setTimeout(() => {
+    box.style.display = "none";
+  }, 2500);
+}
