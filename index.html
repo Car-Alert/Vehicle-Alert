@@ -13,12 +13,13 @@
 
   <p id="vehicleText"></p>
 
-  <select id="issueSelect" onchange="enableButton()" style="width:100%;padding:10px;margin:10px 0;">
-    <option value="">Select Issue</option>
-    <option value="No Parking">No Parking</option>
-    <option value="Move Vehicle">Move Vehicle</option>
-    <option value="Lights On">Lights On</option>
-  </select>
+ <div id="options">
+
+    <button class="opt" onclick="selectIssue(this,'No Parking')">No Parking</button>
+    <button class="opt" onclick="selectIssue(this,'Move Vehicle')">Move Vehicle</button>
+    <button class="opt" onclick="selectIssue(this,'Lights On')">Lights On</button>
+
+  </div>
 
   <button id="sendBtn" onclick="sendAlert()" disabled
     style="width:100%;padding:12px;background:gray;color:white;border:none;border-radius:8px;">
