@@ -1,13 +1,13 @@
 
 
-const botToken = "YOUR_BOT_TOKEN";
-const chatId = "YOUR_CHAT_ID";
+const botToken = "8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc";
+const chatId = "2105892713";
 
 let selectedIssue = "";
 
 // show vehicle
 const params = new URLSearchParams(window.location.search);
-const vehicle = params.get("v") || "Unknown";
+const vehicle = params.get("v") || "GRAND VITARA";
 
 document.getElementById("vehicleText").innerText =
 "Vehicle: " + vehicle;
@@ -37,15 +37,15 @@ function sendAlert() {
 `🚨 Vehicle Alert
 Vehicle: ${vehicle}
 Issue: ${selectedIssue}
-Time: ${new Date().toLocaleString()}`;
+Time: ${new Date().toLocaleString()};
 
-  fetch("https://api.telegram.org/bot" + botToken + "/sendMessage", {
+  fetch("https://api.telegram.org/bot"+8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc+"/sendMessage", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     body:
-      "chat_id=" + encodeURIComponent(chatId) +
+      "chat_id=" + encodeURIComponent(2105892713) +
       "&text=" + encodeURIComponent(message)
   })
   .then(res => res.json())
