@@ -1,6 +1,6 @@
 // ====== CONFIG (yahan values baad mein replace karna hai) ======
-const botToken = "YOUR_BOT_TOKEN";
-const chatId = "YOUR_CHAT_ID";
+const botToken = "8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw";
+const chatId = "2105892713";
 
 // Vehicle from URL
 const params = new URLSearchParams(window.location.search);
