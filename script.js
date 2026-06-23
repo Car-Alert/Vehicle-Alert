@@ -1,5 +1,5 @@
 const botToken = "8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc";
-const chatId = "8078122204";
+const chatId = "2105892713";
 
 const params = new URLSearchParams(window.location.search);
 const vehicle = params.get("v") || "Grand Vitara";
@@ -21,7 +21,7 @@ function sendAlert(issue) {
   headers: {
     "Content-Type": "application/x-www-form-urlencoded"
   },
-  body: "chat_id=" + encodeURIComponent(8078122204) + "&text=" + encodeURIComponent(message)
+  body: "chat_id=" + encodeURIComponent(2105892713) + "&text=" + encodeURIComponent(message)
 })
 .then(function(response) {
   return response.json();
