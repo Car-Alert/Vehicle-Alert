@@ -11,9 +11,9 @@ function sendAlert(issue) {
 
   const message =
 `🚨 Vehicle Alert
-Vehicle: ${vehicle}
-Issue: ${issue}
-Time: ${new Date().toLocaleString()}`;
+Vehicle: {vehicle}
+Issue: {issue}
+Time: {new Date().toLocaleString()};
 
   fetch(
     "https://api.telegram.org/bot" +
