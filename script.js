@@ -8,7 +8,7 @@ const params = new URLSearchParams(window.location.search);
 const vehicle = params.get("v") || "Unknown";
 
 document.getElementById("vehicleText").innerText =
-"Vehicle: GRAND VITARA" + vehicle;
+"Vehicle: " + vehicle;
 
 // select issue
 function selectIssue(btn, issue) {
