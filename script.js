@@ -1,3 +1,4 @@
+alert("JavaScript Loaded");
 function sendAlert(issue) {
 
   const botToken = "8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw";
