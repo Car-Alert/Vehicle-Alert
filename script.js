@@ -27,7 +27,7 @@ function sendAlert() {
 
   const vehicle =
     new URLSearchParams(window.location.search).get("v") ||
-    "GRAND VITARA";
+    "Unknown";
 
   const message =
 `🚨 Vehicle Alert
