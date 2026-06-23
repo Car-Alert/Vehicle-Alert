@@ -51,8 +51,10 @@ Time: ${new Date().toLocaleString()}`;
     console.log(data);
 
     if (data.ok) {
+document.getElementById("vehicleText").innerHTML =
+  `<strong>Vehicle:</strong> ${vehicle}`;}
 
-      document.getElementById("success").style.display = "flex";
+{      document.getElementById("success").style.display = "flex";
 
       setTimeout(() => {
         location.reload();
