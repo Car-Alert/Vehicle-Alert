@@ -8,8 +8,9 @@ document.getElementById("vehicleText").innerText =
   "Vehicle: " + vehicle;
 
 function sendAlert(issue) {
+  alert(issue);
 
-  var message =
+  const message =
     "🚨 Vehicle Alert\n" +
     "Vehicle: " + vehicle + "\n" +
     "Issue: " + issue + "\n" +
@@ -20,7 +21,7 @@ function sendAlert(issue) {
   headers: {
     "Content-Type": "application/x-www-form-urlencoded"
   },
-  body: "chat_id=" + 8078122204 + "text=" + encodeURIComponent(message)
+  body: "chat_id=" + encodeURIComponent(8078122204) + "&text=" + encodeURIComponent(message)
 })
 .then(function(response) {
   return response.json();
