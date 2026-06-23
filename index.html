@@ -8,39 +8,23 @@
   
 <body>
 
-  <div class="container">
-    <h2>Vehicle Assistance Contact</h2>
+  <div class="box">
+  <h2>Vehicle Alert System</h2>
 
-    <p id="vehicleText">Loading vehicle...</p>
+  <p id="vehicleText"></p>
 
-    <div class="buttons">
+  <select id="issueSelect" onchange="enableButton()" style="width:100%;padding:10px;margin:10px 0;">
+    <option value="">Select Issue</option>
+    <option value="No Parking">No Parking</option>
+    <option value="Move Vehicle">Move Vehicle</option>
+    <option value="Lights On">Lights On</option>
+  </select>
 
-      <button onclick="sendAlert('No Parking Zone')">
-        No Parking Zone
-      </button>
-
-      <button onclick="sendAlert('Please Move Vehicle')">
-        Please Move Vehicle
-      </button>
-
-      <button onclick="sendAlert('Headlights On')">
-        Headlights On
-      </button>
-
-      <button onclick="sendAlert('Vehicle Damaged')">
-        Vehicle Damaged
-      </button>
-
-      <button onclick="sendAlert('Security Issue')">
-        Security Issue
-      </button>
-
-      <button onclick="sendAlert('Other Issue')">
-        Other Issue
-      </button>
- 
-  </div>
-
+  <button id="sendBtn" onclick="sendAlert()" disabled
+    style="width:100%;padding:12px;background:gray;color:white;border:none;border-radius:8px;">
+    Send Notification
+  </button>
+</div>
  <script src="script.js"></script>
 </body>
 </html>
