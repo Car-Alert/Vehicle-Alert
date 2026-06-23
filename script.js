@@ -15,7 +15,7 @@ function sendAlert(issue) {
     "Issue: " + issue + "\n" +
     "Time: " + new Date().toLocaleString();
 
- fetch("https://api.telegram.org/bot + 8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw + /sendMessage", {
+ fetch("https://api.telegram.org/bot"+8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw+"/sendMessage", {
   method: "POST",
   headers: {
     "Content-Type": "application/x-www-form-urlencoded"
