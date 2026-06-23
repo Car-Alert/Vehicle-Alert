@@ -10,7 +10,7 @@ document.getElementById("vehicleText").innerText =
 function sendAlert(issue) {
   alert(issue);
 
-  const message =
+  var message =
     "🚨 Vehicle Alert\n" +
     "Vehicle: " + vehicle + "\n" +
     "Issue: " + issue + "\n" +
