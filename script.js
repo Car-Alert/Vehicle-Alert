@@ -38,7 +38,7 @@ Issue: ${selectedIssue}
 
 Time: ${new Date().toLocaleString()}`;
 
-  fetch(https://api.telegram.org/bot${8078122204:AAEItG8nXVq6mTc6JBx3Kz2aHjctouYGQlQ}/sendMessage, {
+  fetch(https://api.telegram.org/bot{8078122204:AAEItG8nXVq6mTc6JBx3Kz2aHjctouYGQlQ}/sendMessage, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
