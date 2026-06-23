@@ -1,85 +1,36 @@
-const botToken = "8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc";
-const chatId = "2105892713";
+function sendAlert(issue) {
 
-let selectedIssue = "";
+  const botToken = "8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc";
+  const chatId = "2105892713";
 
-// show vehicle
-const params = new URLSearchParams(window.location.search);
-const vehicle = params.get("v") || "Grand Vitara";
-
-document.getElementById("vehicleText").innerText =
-"Vehicle: " + vehicle;
-
-// select issue
-function selectIssue(btn, issue) {
-
-  document.querySelectorAll(".opt").forEach(b => {
-    b.classList.remove("active");
-  });
-
-  btn.classList.add("active");
-
-  selectedIssue = issue;
-
-  const sendBtn = document.getElementById("sendBtn");
-  sendBtn.disabled = false;
-  sendBtn.classList.add("active");
-}
-
-// send message
-function sendAlert() {
-
-  if (!selectedIssue) return;
+  const vehicle = new URLSearchParams(window.location.search).get("v") || "Unknown";
 
   const message =
 `🚨 Vehicle Alert
 Vehicle: ${vehicle}
-Issue: ${selectedIssue}
+Issue: ${issue}
 Time: ${new Date().toLocaleString()}`;
 
-  fetch("https://api.telegram.org/bot" + botToken + "/sendMessage", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body:
-      "chat_id=" + encodeURIComponent(2105892713) +
-      "&text=" + encodeURIComponent(message)
-  })
-  .then(res => res.json())
-  .then(data => {
+// IMPORTANT: form-data style request (works everywhere)
+fetch(`https://api.telegram.org/bot${8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc}/sendMessage`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: `chat_id=${2105892713}&text=${encodeURIComponent(message)}`
+})
+.then(res => res.json())
+.then(data => {
+  console.log(data);
 
-    if (data.ok) {
-
-      showSuccess();
-
-      // reset after send
-      selectedIssue = "";
-      document.querySelectorAll(".opt").forEach(b => {
-        b.classList.remove("active");
-      });
-
-      const sendBtn = document.getElementById("sendBtn");
-      sendBtn.disabled = true;
-      sendBtn.classList.remove("active");
-
-    } else {
-      alert("Error: " + data.description);
-    }
-
-  })
-  .catch(err => {
-    alert("Network Error");
-    console.log(err);
-  });
-}
-
-// success screen
-function showSuccess() {
-  const box = document.getElementById("success");
-  box.style.display = "flex";
-
-  setTimeout(() => {
-    box.style.display = "none";
-  }, 2500);
+  if (data.ok) {
+    alert("Alert Sent Successfully 👍");
+  } else {
+    alert("Telegram Error: " + data.description);
+  }
+})
+.catch(err => {
+  console.log(err);
+  alert("Network Error");
+});
 }
