@@ -38,14 +38,13 @@ Issue: ${selectedIssue}
 
 Time: ${new Date().toLocaleString()}`;
 
-  fetch(https://api.telegram.org/bot{8078122204:AAEItG8nXVq6mTc6JBx3Kz2aHjctouYGQlQ}/sendMessage, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body:
-      `chat_id=${2105892713}&text=${encodeURIComponent(message)}`
-  })
+  fetch(`https://api.telegram.org/bot${8078122204:AAEItG8nXVq6mTc6JBx3Kz2aHjctouYGQlQ}/sendMessage`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: `chat_id=${2105892713}&text=${encodeURIComponent(message)}`
+})
   .then(res => res.json())
   .then(data => {
 
