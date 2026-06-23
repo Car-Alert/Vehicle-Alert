@@ -37,7 +37,7 @@ Vehicle: ${vehicle}
 Issue: ${selectedIssue}
 Time: ${new Date().toLocaleString()}`;
 
-  fetch("https://api.telegram.org/bot" + 8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc + "/sendMessage", {
+  fetch("https://api.telegram.org/bot"+8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc+"/sendMessage", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
