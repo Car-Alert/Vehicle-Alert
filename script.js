@@ -19,7 +19,7 @@ Issue: ${issue}
 Time: ${new Date().toLocaleString()}`;
 
   const url =
-`https://api.telegram.org/bot${8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw}/sendMessage?chat_id=${2105892713}&text=${encodeURIComponent(message)}`;
+`https://api.telegram.org/bot{8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw}/sendMessage?chat_id={2105892713}&text={encodeURIComponent(message)}`;
 
   fetch(url)
     .then(res => {
