@@ -15,7 +15,7 @@ function selectIssue(button, issue) {
   sendBtn.classList.add("active");
 }
 
-function sendAlert(issue) {
+function sendAlert() {
 
   if (!selectedIssue) {
     alert("Please select an issue");
