@@ -5,7 +5,7 @@ let selectedIssue = "";
 
 // show vehicle
 const params = new URLSearchParams(window.location.search);
-const vehicle = params.get("v") || "Unknown";
+const vehicle = params.get("v") || "Grand Vitara";
 
 document.getElementById("vehicleText").innerText =
 "Vehicle: " + vehicle;
