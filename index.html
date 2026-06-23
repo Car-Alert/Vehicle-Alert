@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vehicle Alert System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Vehicle Assistance Contact</h2>
+
+    <p id="vehicleText">Loading vehicle...</p>
+
+    <div class="buttons">
+
+      <button onclick="sendAlert('No Parking Zone')">
+        No Parking Zone
+      </button>
+
+      <button onclick="sendAlert('Please Move Vehicle')">
+        Please Move Vehicle
+      </button>
+
+      <button onclick="sendAlert('Headlights On')">
+        Headlights On
+      </button>
+
+      <button onclick="sendAlert('Vehicle Damaged')">
+        Vehicle Damaged
+      </button>
+
+      <button onclick="sendAlert('Security Issue')">
+        Security Issue
+      </button>
+
+      <button onclick="sendAlert('Other Issue')">
+        Other Issue
+      </button>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
