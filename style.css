@@ -24,3 +24,35 @@ button {
   font-size: 16px;
   cursor: pointer;
 }
+
+.opt {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.opt.active {
+  background: #4caf50;
+  color: white;
+  border: none;
+}
+
+.sendBtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: gray;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: not-allowed;
+}
+
+.sendBtn.active {
+  background: #ff3b3b;
+  cursor: pointer;
+}
