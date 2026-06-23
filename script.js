@@ -1,4 +1,4 @@
-const botToken = "8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw";
+const botToken = "8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc";
 const chatId = "8078122204";
 
 const params = new URLSearchParams(window.location.search);
@@ -16,7 +16,7 @@ function sendAlert(issue) {
     "Issue: " + issue + "\n" +
     "Time: " + new Date().toLocaleString();
 
- fetch("https://api.telegram.org/bot8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw/sendMessage", {
+ fetch("https://api.telegram.org/bot8078122204:AAEiHYxdsX92FJx-dIzXbl2FLz8gucB9JPc/sendMessage", {
   method: "POST",
   headers: {
     "Content-Type": "application/x-www-form-urlencoded"
