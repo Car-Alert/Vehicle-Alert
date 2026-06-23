@@ -15,18 +15,17 @@ function sendAlert(issue) {
     "Issue: " + issue + "\n" +
     "Time: " + new Date().toLocaleString();
 
-  fetch("https://api.telegram.org/bot" + 8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw + "/sendMessage"), {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body:
-      "chat_id=" + encodeURIComponent(2105892713) +
-      "&text=" + encodeURIComponent(hiiii)
-  }
-  .then(function(response) {
-    return response.json();
-  })
+ fetch("https://api.telegram.org/bot" + 8078122204:AAGulJMo5Cb71XvWUdm7rV3d0bElEuXY3kw + "/sendMessage", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  body: "chat_id=" + 2105892713 + "text=" + encodeURIComponent(message)
+})
+.then(function(response) {
+  return response.json();
+})
+
   .then(function(data) {
 
     if (data.ok) {
