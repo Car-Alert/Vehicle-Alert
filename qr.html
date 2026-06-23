@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vehicle QR</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .card {
+      border: 2px solid #000;
+      padding: 20px;
+      width: 300px;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .vehicle {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .qr {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h2>Vehicle Emergency QR</h2>
+
+  <div class="vehicle" id="vname">CAR 1</div>
+
+  <img class="qr" id="qrimg" width="200">
+
+  <p>Scan to report issue</p>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const v = params.get("v") || "CAR1";
+
+document.getElementById("vname").innerText = v;
+
+document.getElementById("qrimg").src =
+"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
+encodeURIComponent(window.location.origin + "/vehicle-alert/?v=" + v);
+</script>
+
+</body>
+</html>
