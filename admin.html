@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vehicle QR Generator</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    padding:20px;
+}
+
+.box{
+    max-width:450px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:8px;
+    background:#1976d2;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+#result{
+    margin-top:20px;
+    text-align:center;
+    word-break:break-all;
+}
+
+img{
+    margin-top:15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>🚗 Vehicle QR Generator</h2>
+
+<input id="owner" placeholder="Owner Name">
+
+<input id="car" placeholder="Car Name">
+
+<input id="number" placeholder="Vehicle Number">
+
+<button onclick="generate()">Generate QR</button>
+
+<div id="result"></div>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
