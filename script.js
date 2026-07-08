@@ -39,15 +39,6 @@ window.onload = () => {
 
     if(plateEl) plateEl.textContent = number;
 
-    // QR Code
-
-    if(qrEl){
-
-        qrEl.src =
-        "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
-        encodeURIComponent(window.location.href);
-
-    }
 
 };
 
