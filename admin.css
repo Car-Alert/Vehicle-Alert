@@ -1,0 +1,135 @@
+/* ==========================
+   ADMIN PANEL - PREMIUM UI
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#38bdf8);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:480px;
+}
+
+h1{
+    color:#fff;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#e2e8f0;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.card{
+    background:rgba(255,255,255,.97);
+    border-radius:22px;
+    padding:25px;
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+    font-weight:600;
+    color:#1e293b;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    font-size:15px;
+    outline:none;
+    transition:.25s;
+}
+
+input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+button{
+    width:100%;
+    margin-top:22px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(90deg,#2563eb,#1d4ed8);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+.result{
+    margin-top:25px;
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+    display:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.result img{
+    width:220px;
+    height:220px;
+    margin:15px auto;
+    display:block;
+    border-radius:10px;
+    border:1px solid #ddd;
+}
+
+.result input{
+    margin-top:10px;
+    text-align:center;
+    font-size:14px;
+}
+
+.action-btn{
+    margin-top:12px;
+    background:linear-gradient(90deg,#16a34a,#15803d);
+}
+
+.download-btn{
+    background:linear-gradient(90deg,#f59e0b,#d97706);
+}
+
+@media(max-width:480px){
+
+.card{
+
+padding:20px;
+
+}
+
+.result img{
+
+width:180px;
+height:180px;
+
+}
+
+}
