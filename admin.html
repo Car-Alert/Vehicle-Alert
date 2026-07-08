@@ -1,77 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Vehicle QR Generator</title>
 
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
-    padding:20px;
-}
-
-.box{
-    max-width:450px;
-    margin:auto;
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 0 10px rgba(0,0,0,.2);
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
-    box-sizing:border-box;
-}
-
-button{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:8px;
-    background:#1976d2;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-}
-
-#result{
-    margin-top:20px;
-    text-align:center;
-    word-break:break-all;
-}
-
-img{
-    margin-top:15px;
-}
-</style>
+<link rel="stylesheet" href="admin.css">
 
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-<h2>🚗 Vehicle QR Generator</h2>
+    <h1>🚗 Vehicle QR Generator</h1>
 
-<input id="owner" placeholder="Owner Name">
+    <p class="subtitle">
+        Create QR Codes For Unlimited Vehicles
+    </p>
 
-<input id="car" placeholder="Car Name">
+    <div class="card">
 
-<input id="number" placeholder="Vehicle Number">
+        <label>👤 Owner Name</label>
 
-<button onclick="generate()">Generate QR</button>
+        <input
+        type="text"
+        id="owner"
+        placeholder="Enter Owner Name">
 
-<div id="result"></div>
+        <label>🚘 Car Name</label>
+
+        <input
+        type="text"
+        id="car"
+        placeholder="Enter Car Name">
+
+        <label>🚗 Vehicle Number</label>
+
+        <input
+        type="text"
+        id="number"
+        placeholder="Enter Vehicle Number">
+
+        <button onclick="generateQR()">
+
+            🚀 Generate QR
+
+        </button>
+
+    </div>
+
+    <div
+    id="result"
+    class="result">
+
+    </div>
 
 </div>
 
 <script src="admin.js"></script>
 
 </body>
+
 </html>
