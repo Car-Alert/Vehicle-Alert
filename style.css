@@ -57,38 +57,52 @@ button {
   cursor: pointer;
 }
 .vehicle-card{
-  background:white;
-  padding:20px;
-  border-radius:20px;
-  margin-bottom:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    background:#ffffff;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.vehicle-card p{
+    margin:8px 0;
+    font-size:16px;
 }
 
 .number-plate{
-  margin-top:15px;
-  background:white;
-  border:4px solid #111;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
+    width:280px;
+    height:70px;
+    margin:20px auto;
+    display:flex;
+    border:3px solid #111;
+    border-radius:10px;
+    overflow:hidden;
+    background:white;
 }
 
 .plate-left{
-  width:70px;
-  background:#0d47a1;
-  color:white;
-  text-align:center;
-  padding:15px 5px;
-  font-weight:bold;
+    width:60px;
+    background:#003399;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
 }
 
 #plateNumber{
-  flex:1;
-  text-align:center;
-  font-size:42px;
-  font-weight:900;
-  letter-spacing:4px;
-  padding:20px;
-  font-family:Arial Black, sans-serif;
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+#qrCode{
+    display:block;
+    margin:20px auto;
+    border:5px solid white;
+    border-radius:10px;
 }
