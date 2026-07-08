@@ -56,11 +56,15 @@ function sendAlert() {
   const message =
 `🚨 Vehicle Alert
 
-Vehicle: ${vehicle}
+👤 Owner : ${owner}
 
-Issue: ${selectedIssue}
+🚘 Car : ${car}
 
-Time: ${new Date().toLocaleString()}`;
+🚗 Number : ${number}
+
+⚠️ Issue : ${selectedIssue}
+
+🕒 Time : ${new Date().toLocaleString()}`;
 
   fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
   method: "POST",
