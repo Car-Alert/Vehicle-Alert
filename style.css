@@ -294,9 +294,24 @@ opacity:1;
 
 /* Mobile */
 
-@media(max-width:480px)
+@media (max-width:480px){
 
-{
+.number-plate{
+    width:260px;
+    height:62px;
+}
+
+.plate-left{
+    width:55px;
+    font-size:18px;
+}
+
+#plateNumber{
+    font-size:26px;
+}
+
+
+
 
 .container{
 
