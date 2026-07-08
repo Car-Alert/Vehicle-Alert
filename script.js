@@ -1,102 +1,184 @@
-const params = new URLSearchParams(window.location.search);
+/* ==========================================
+   VEHICLE ALERT SYSTEM
+   FINAL SCRIPT.JS
+========================================== */
 
-const owner = params.get("owner") || "Unknown";
-const car = params.get("car") || "Unknown";
-const number = params.get("number") || "Unknown";
-
-window.onload = function () {
-
-  const ownerEl = document.getElementById("ownerName");
-  const carEl = document.getElementById("carName");
-  const plateEl = document.getElementById("plateNumber");
-  const qrEl = document.getElementById("qrCode");
-
-  if(ownerEl) ownerEl.textContent = owner;
-  if(carEl) carEl.textContent = car;
-  if(plateEl) plateEl.textContent = number;
-
-  if(qrEl){
-    qrEl.src =
-      "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=" +
-      encodeURIComponent(window.location.href);
-  }
-
-};
 let selectedIssue = "";
 
-function selectIssue(button, issue) {
+/* ------------------------------
+   Load Vehicle Details
+------------------------------ */
 
-  selectedIssue = issue;
+const params = new URLSearchParams(window.location.search);
 
-  document.querySelectorAll(".opt").forEach(btn => {
-    btn.classList.remove("active");
-  });
+const owner =
+params.get("owner") || "Unknown Owner";
 
-  button.classList.add("active");
+const car =
+params.get("car") || "Unknown Vehicle";
 
-  const sendBtn = document.getElementById("sendBtn");
-  sendBtn.disabled = false;
-  sendBtn.classList.add("active");
+const number =
+params.get("number") || "Unknown";
+
+/* ------------------------------
+   Page Load
+------------------------------ */
+
+window.onload = () => {
+
+    // Vehicle Details
+
+    const ownerEl = document.getElementById("ownerName");
+    const carEl = document.getElementById("carName");
+    const plateEl = document.getElementById("plateNumber");
+    const qrEl = document.getElementById("qrCode");
+
+    if(ownerEl) ownerEl.textContent = owner;
+
+    if(carEl) carEl.textContent = car;
+
+    if(plateEl) plateEl.textContent = number;
+
+    // QR Code
+
+    if(qrEl){
+
+        qrEl.src =
+        "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
+        encodeURIComponent(window.location.href);
+
+    }
+
+};
+
+
+/* ------------------------------
+   Select Issue
+------------------------------ */
+
+function selectIssue(button, issue){
+
+    selectedIssue = issue;
+
+    document.querySelectorAll(".opt").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const sendBtn =
+    document.getElementById("sendBtn");
+
+    sendBtn.disabled = false;
+
+    sendBtn.classList.add("active");
+
 }
 
-function sendAlert() {
 
-  if (!selectedIssue) {
-    alert("Please select an issue");
-    return;
-  }
+/* ------------------------------
+   Send Telegram Alert
+------------------------------ */
 
-  const botToken = "8078122204:AAEItG8nXVq6mTc6JBx3Kz2aHjctouYGQlQ";
-  const chatId = "2105892713";
+function sendAlert(){
 
-  const vehicle =
-    new URLSearchParams(window.location.search).get("v") ||
-    "Unknown";
+    if(selectedIssue===""){
 
-  const message =
-`🚨 Vehicle Alert
+        alert("Please select an issue.");
+
+        return;
+
+    }
+
+    // Telegram
+
+    const BOT_TOKEN =
+    "YOUR_BOT_TOKEN";
+
+    const CHAT_ID =
+    "YOUR_CHAT_ID";
+
+    // Message
+
+    const message =
+
+`🚨 VEHICLE ALERT
 
 👤 Owner : ${owner}
 
-🚘 Car : ${car}
+🚘 Vehicle : ${car}
 
 🚗 Number : ${number}
 
 ⚠️ Issue : ${selectedIssue}
 
-🕒 Time : ${new Date().toLocaleString()}`;
+🕒 Time : ${new Date().toLocaleString()}
 
-  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/x-www-form-urlencoded"
-  },
-  body: `chat_id=${2105892713}&text=${encodeURIComponent(message)}`
+🌐 Page :
+
+${window.location.href}
+`;
+
+    fetch(
+`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/x-www-form-urlencoded"
+},
+
+body:
+
+`chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
+
+}
+
+)
+
+.then(res=>res.json())
+
+.then(data=>{
+
+if(data.ok){
+
+showSuccess();
+
+}else{
+
+alert("Telegram Error : " + data.description);
+
+}
+
 })
-  .then(res => res.json())
-  .then(data => {
 
-    console.log(data);
+.catch(()=>{
 
-    if (data.ok) {
- document.getElementById("success").style.display = "flex";
+alert("Network Error");
 
-      setTimeout(() => {
+});
+
+}
+
+
+/* ------------------------------
+   Success Popup
+------------------------------ */
+
+function showSuccess(){
+
+    const popup =
+    document.getElementById("success");
+
+    popup.classList.add("show");
+
+    setTimeout(()=>{
+
+        popup.classList.remove("show");
+
         location.reload();
-      }, 3000);
 
-    } else {
+    },3000);
 
-      alert("Telegram Error: " + data.description);
-
-    }
-
-  })
-  .catch(err => {
-
-    console.log(err);
-
-    alert("Network Error");
-
-  });
 }
