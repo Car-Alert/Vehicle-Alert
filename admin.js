@@ -20,7 +20,7 @@ function generateQR() {
        https://username.github.io/VehicleAlert/
     */
 
-    const baseURL = "https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/";
+    const baseURL = "https://car-alert.github.io/Vehicle-Alert/";
 
     const vehicleURL =
         `${baseURL}?owner=${encodeURIComponent(owner)}&car=${encodeURIComponent(car)}&number=${encodeURIComponent(number)}`;
