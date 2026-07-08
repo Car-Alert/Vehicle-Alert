@@ -1,37 +1,86 @@
-function generate(){
+/* ==========================================
+   VEHICLE QR GENERATOR
+   FINAL ADMIN.JS
+========================================== */
 
-const owner=document.getElementById("owner").value;
-const car=document.getElementById("car").value;
-const number=document.getElementById("number").value;
+function generateQR() {
 
-const url=
-"https://car-alert.github.io/Vehicle/?" +
-"owner="+encodeURIComponent(owner)+
-"&car="+encodeURIComponent(car)+
-"&number="+encodeURIComponent(number);
+    const owner = document.getElementById("owner").value.trim();
+    const car = document.getElementById("car").value.trim();
+    const number = document.getElementById("number").value.trim();
 
-const qr=
-"https://api.qrserver.com/v1/create-qr-code/?size=220x220&data="+
-encodeURIComponent(url);
+    if (!owner || !car || !number) {
+        alert("Please fill all fields.");
+        return;
+    }
 
-document.getElementById("result").innerHTML=`
+    /* IMPORTANT
+       Replace this URL with YOUR GitHub Pages URL
+       Example:
+       https://username.github.io/VehicleAlert/
+    */
 
-<p><b>Vehicle URL</b></p>
+    const baseURL = "https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/";
 
-<input value="${url}" readonly>
+    const vehicleURL =
+        `${baseURL}?owner=${encodeURIComponent(owner)}&car=${encodeURIComponent(car)}&number=${encodeURIComponent(number)}`;
 
-<br><br>
+    const qrURL =
+        `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(vehicleURL)}`;
 
-<img src="${qr}">
+    document.getElementById("result").style.display = "block";
 
-<br><br>
+    document.getElementById("result").innerHTML = `
 
-<button onclick="navigator.clipboard.writeText('${url}')">
+<h2>✅ Vehicle Created</h2>
 
-Copy URL
+<img id="qrImage" src="${qrURL}" alt="QR Code">
 
+<p style="margin-top:15px;font-weight:bold;">
+Vehicle Link
+</p>
+
+<input
+type="text"
+id="vehicleLink"
+value="${vehicleURL}"
+readonly>
+
+<button class="action-btn" onclick="copyLink()">
+📋 Copy Link
+</button>
+
+<button class="download-btn" onclick="downloadQR()">
+💾 Download QR
 </button>
 
 `;
+
+}
+
+function copyLink() {
+
+    const link = document.getElementById("vehicleLink");
+
+    link.select();
+    link.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(link.value);
+
+    alert("Vehicle Link Copied.");
+
+}
+
+function downloadQR() {
+
+    const image = document.getElementById("qrImage");
+
+    const a = document.createElement("a");
+
+    a.href = image.src;
+
+    a.download = "VehicleQR.png";
+
+    a.click();
 
 }
