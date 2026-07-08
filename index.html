@@ -1,140 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Vehicle Alert System</title>
 
-  <style>
-    body {
-      font-family: Arial;
-      background: #f2f2f2;
-      text-align: center;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .box {
-      background:#87CEEB ;
-      padding: 20px;
-      border-radius: 12px;
-      width: 1000px;
-      margin: auto;
-      box-shadow: 0px 0px 10px #ccc;
-    }
+<title>Vehicle Alert System</title>
 
-    .opt {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+<link rel="stylesheet" href="style.css">
 
-    .opt.active {
-      background: #4caf50;
-      color: white;
-      border: none;
-    }
-
-    #sendBtn {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background: gray;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: not-allowed;
-      font-size: 16px;
-    }
-
-    #sendBtn.active {
-      background: #ff3b3b;
-      cursor: pointer;
-    }
-
-    /* SUCCESS SCREEN */
-    #success {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      color: white;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      font-size: 30px;
-    }
-
-    #success small {
-      font-size: 16px;
-      margin-top: 10px;
-    }
-
-  </style>
 </head>
 
 <body>
 
-<h1>Vehicle Alert System</h1>
+<div class="container">
 
-<div class="box">
+    <h1>🚗 Vehicle Alert</h1>
 
- <div class="vehicle-card">
+    <p class="subtitle">
+        Scan • Select Issue • Notify Owner
+    </p>
 
-  <h2>🚗 Vehicle Details</h2>
+    <!-- Vehicle Card -->
 
-  <p><strong>👤 Owner:</strong> <span id="ownerName">Loading...</span></p>
+    <div class="vehicle-card">
 
-  <p><strong>🚘 Car:</strong> <span id="carName">Loading...</span></p>
+        <div class="car-icon">
+            🚘
+        </div>
 
-  <div class="number-plate">
-      <div class="plate-left">
-          IND
-      </div>
+        <h2 id="carName">Loading...</h2>
 
-      <div id="plateNumber">
-          Loading...
-      </div>
-  </div>
+        <p class="owner">
+            👤
+            <span id="ownerName">
+                Loading...
+            </span>
+        </p>
 
-  <div style="margin-top:20px;">
-      <img
-        id="qrCode"
-        src=""
-        width="170"
-        height="170"
-        alt="QR Code">
-  </div>
+        <!-- Number Plate -->
 
+        <div class="number-plate">
 
-  
+            <div class="plate-left">
+                IND
+            </div>
+
+            <div class="plate-right">
+
+                <span id="plateNumber">
+                    Loading...
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- QR Code -->
+
+        <div class="qr-box">
+
+            <img
+            id="qrCode"
+            src=""
+            alt="QR Code">
+
+            <p>
+                Vehicle QR Code
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Issue Buttons -->
+
+    <button class="opt"
+    onclick="selectIssue(this,'No Parking Zone')">
+
+    🚫 No Parking Zone
+
+    </button>
+
+    <button class="opt"
+    onclick="selectIssue(this,'Please Move Vehicle')">
+
+    🚗 Please Move Vehicle
+
+    </button>
+
+    <button class="opt"
+    onclick="selectIssue(this,'Headlights On')">
+
+    💡 Headlights On
+
+    </button>
+
+    <button class="opt"
+    onclick="selectIssue(this,'Vehicle Damaged')">
+
+    🔧 Vehicle Damaged
+
+    </button>
+
+    <button class="opt"
+    onclick="selectIssue(this,'Security Issue')">
+
+    🛡️ Security Issue
+
+    </button>
+
+    <button class="opt"
+    onclick="selectIssue(this,'Other Issue')">
+
+    ❓ Other Issue
+
+    </button>
+
+    <!-- Send -->
+
+    <button
+    id="sendBtn"
+    onclick="sendAlert()"
+    disabled>
+
+    🚨 Send Alert
+
+    </button>
 
 </div>
 
-  <button class="opt" onclick="selectIssue(this,'No Parking Zone')">No Parking Zone</button>
-  <button class="opt" onclick="selectIssue(this,'Please Move Vehicle')">Please Move Vehicle</button>
-  <button class="opt" onclick="selectIssue(this,'Headlights On')">Headlights On</button>
-  <button class="opt" onclick="selectIssue(this,'Vehicle Damaged')">Vehicle Damaged</button>
-  <button class="opt" onclick="selectIssue(this,'Security Issue')">Security Issue</button>
-  <button class="opt" onclick="selectIssue(this,'Other Issue')">Other Issue</button>
+<!-- Success -->
 
-  <button id="sendBtn" onclick="sendAlert()" disabled>
-    Send Alert ⚠️
-  </button>
-</div>
-
-<!-- SUCCESS SCREEN -->
 <div id="success">
-  🚨 MESSAGE SENT SUCCESSFULLY
-  <small>Redirecting...</small>
+
+<div class="success-card">
+
+<h2>
+
+✅ Alert Sent Successfully
+
+</h2>
+
+<p>
+
+Vehicle Owner has been notified.
+
+</p>
+
 </div>
 
-<script src="script.js">
-</script>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
