@@ -20,15 +20,14 @@ body{
 }
 
 .container{
-    width:98%;
-    max-width:800px;
-    
-    background:rgba(255,255,255,.96);
-    border-radius:24px;
-    padding:30px;
-    box-shadow:0 20px 45px rgba(0,0,0,.25);
+    width:95%;
+    max-width:520px;
+    margin:40px auto;
+    background:#fff;
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
 }
-
 h1{
     text-align:center;
     color:#111827;
