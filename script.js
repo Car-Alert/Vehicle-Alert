@@ -1,3 +1,27 @@
+const params = new URLSearchParams(window.location.search);
+
+const owner = params.get("owner") || "Unknown";
+const car = params.get("car") || "Unknown";
+const number = params.get("number") || "Unknown";
+
+window.onload = function () {
+
+  const ownerEl = document.getElementById("ownerName");
+  const carEl = document.getElementById("carName");
+  const plateEl = document.getElementById("plateNumber");
+  const qrEl = document.getElementById("qrCode");
+
+  if(ownerEl) ownerEl.textContent = owner;
+  if(carEl) carEl.textContent = car;
+  if(plateEl) plateEl.textContent = number;
+
+  if(qrEl){
+    qrEl.src =
+      "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=" +
+      encodeURIComponent(window.location.href);
+  }
+
+};
 let selectedIssue = "";
 
 function selectIssue(button, issue) {
