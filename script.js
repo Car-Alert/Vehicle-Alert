@@ -97,8 +97,8 @@ function confirmSend(){
 
 function sendTelegram(){
 
-    const BOT_TOKEN = "YOUR_FULL_BOT_TOKEN";
-    const CHAT_ID = "YOUR_CHAT_ID";
+    const BOT_TOKEN = "8078122204:AAHa6OmL2Qg_pXTFtZXuUQzPkg1QC3nAs_g";
+    const CHAT_ID = "2105892713";
 
     if (navigator.geolocation) {
 
