@@ -171,8 +171,7 @@ alert("Network Error");
 
 function showSuccess(){
 
-    const popup =
-    document.getElementById("success");
+    const popup = document.getElementById("success");
 
     popup.classList.add("show");
 
@@ -180,8 +179,16 @@ function showSuccess(){
 
         popup.classList.remove("show");
 
+        const sendBtn = document.getElementById("sendBtn");
+
+        sendBtn.innerHTML = "🚨 Send Alert";
+        sendBtn.disabled = true;
+        sendBtn.classList.remove("active");
+
         location.reload();
 
     },3000);
+
+}
 
 }
