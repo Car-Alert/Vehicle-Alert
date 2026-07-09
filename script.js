@@ -31,7 +31,6 @@ window.onload = () => {
     const ownerEl = document.getElementById("ownerName");
     const carEl = document.getElementById("carName");
     const plateEl = document.getElementById("plateNumber");
-    const qrEl = document.getElementById("qrCode");
 
     if(ownerEl) ownerEl.textContent = owner;
 
