@@ -95,104 +95,112 @@ function confirmSend(){
    Telegram
 ------------------------------ */
 
-function sendTelegram()
-if (navigator.geolocation) {
+function sendTelegram(){
 
-    navigator.geolocation.getCurrentPosition(
+    const BOT_TOKEN = "YOUR_FULL_BOT_TOKEN";
+    const CHAT_ID = "YOUR_CHAT_ID";
 
-        function(position){
+    if (navigator.geolocation) {
 
-            const lat = position.coords.latitude;
-            const lon = position.coords.longitude;
+        navigator.geolocation.getCurrentPosition(
 
-            sendTelegramMessage(lat, lon);
+            function(position){
 
-        },
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
 
-        function(){
+                sendTelegramMessage(lat, lon);
 
-            sendTelegramMessage(null, null);
+            },
 
-        }
+            function(){
 
-    );
+                sendTelegramMessage(null, null);
 
-}
-else{
+            }
 
-    sendTelegramMessage(null, null);
+        );
 
-}
-{
+    } else {
 
-    const BOT_TOKEN = "8078122204:AAHa6OmL2Qg_pXTFtZXuUQzPkg1QC3nAs_g";
-    const CHAT_ID = "2105892713";
+        sendTelegramMessage(null, null);
 
-    const message =
+    }
+
+
+    function sendTelegramMessage(lat, lon){
+
+        const locationText = (lat && lon)
+        ? `📍 Sender Location\nhttps://maps.google.com/?q=${lat},${lon}`
+        : `📍 Sender Location\nPermission Denied`;
+
+        const message =
 
 `🚨 VEHICLE ALERT
 
-👤 Owner : ${owner}
+👤 Owner: ${owner}
 
-🚘 Vehicle : ${car}
+🚘 Vehicle: ${car}
 
-🚗 Number : ${number}
+🚗 Number: ${number}
 
-⚠️ Issue : ${selectedIssue}
+⚠️ Issue: ${selectedIssue}
 
-🕒 Time : ${new Date().toLocaleString()}
+${locationText}
 
-🌐 Page :
+🕒 Time: ${new Date().toLocaleString()}
 
+🌐 Vehicle Page:
 ${window.location.href}
 
 ━━━━━━━━━━━━━━━━━━
-
 📢 Sent via Vehicle Alert System`;
 
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
 
-        method:"POST",
+            method: "POST",
 
-        headers:{
-            "Content-Type":"application/x-www-form-urlencoded"
-        },
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
 
-        body:`chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
+            body: `chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
 
-    })
+        })
 
-    .then(res=>res.json())
+        .then(res => res.json())
 
-    .then(data=>{
+        .then(data => {
 
-        if(data.ok){
+            if(data.ok){
 
-            showSuccess();
+                showSuccess();
 
-        }else{
+            }else{
 
-            const sendBtn=document.getElementById("sendBtn");
+                const sendBtn = document.getElementById("sendBtn");
 
-            sendBtn.disabled=false;
-            sendBtn.innerHTML="🚨 Send Alert";
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = "🚨 Send Alert";
 
-            alert("Telegram Error : "+data.description);
+                alert("Telegram Error: " + data.description);
 
-        }
+            }
 
-    })
+        })
 
-    .catch(()=>{
+        .catch(() => {
 
-        const sendBtn=document.getElementById("sendBtn");
+            const sendBtn = document.getElementById("sendBtn");
 
-        sendBtn.disabled=false;
-        sendBtn.innerHTML="🚨 Send Alert";
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = "🚨 Send Alert";
 
-        alert("Network Error");
+            alert("Network Error");
 
-    });
+        });
+
+    }
 
 }
 
