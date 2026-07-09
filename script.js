@@ -102,40 +102,40 @@ function sendTelegram(){
 
     if (navigator.geolocation) {
 
-        navigator.geolocation.getCurrentPosition
-(
+        
+            const sendBtn = document.getElementById("sendBtn");
+sendBtn.innerHTML = "📍 Getting Location...";
 
-success,
+navigator.geolocation.getCurrentPosition(
 
-error,
+    function(position){
 
-{
-    enableHighAccuracy: true,
-    timeout: 8000,
-    maximumAge: 0
-}
+        sendBtn.innerHTML = "🚨 Sending Alert...";
+
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        sendTelegramMessage(lat, lon);
+
+    },
+
+    function(){
+
+        sendBtn.innerHTML = "🚨 Sending Alert...";
+
+        sendTelegramMessage(null, null);
+
+    },
+
+    {
+        enableHighAccuracy: true,
+        timeout: 8000,
+        maximumAge: 0
+    }
 
 );
-(
 
-            function(position){
-
-                const lat = position.coords.latitude;
-                const lon = position.coords.longitude;
-
-                sendTelegramMessage(lat, lon);
-
-            },
-
-            function(){
-
-                sendTelegramMessage(null, null);
-
-            }
-
-        );
-
-    } else {
+     else {
 
         sendTelegramMessage(null, null);
 
