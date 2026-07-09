@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -29,13 +30,17 @@
             🚘
         </div>
 
-        <h2 id="carName">Loading...</h2>
+        <h2 id="carName">
+            Loading...
+        </h2>
 
         <p class="owner">
+
             👤
             <span id="ownerName">
                 Loading...
             </span>
+
         </p>
 
         <!-- Number Plate -->
@@ -56,113 +61,108 @@
 
         </div>
 
-
-
     </div>
-
     <!-- Issue Buttons -->
 
     <button class="opt"
     onclick="selectIssue(this,'No Parking Zone')">
-
-    🚫 No Parking Zone
-
+        🚫 No Parking Zone
     </button>
 
     <button class="opt"
     onclick="selectIssue(this,'Please Move Vehicle')">
-
-    🚗 Please Move Vehicle
-
+        🚗 Please Move Vehicle
     </button>
 
     <button class="opt"
     onclick="selectIssue(this,'Headlights On')">
-
-    💡 Headlights On
-
+        💡 Headlights On
     </button>
 
     <button class="opt"
     onclick="selectIssue(this,'Vehicle Damaged')">
-
-    🔧 Vehicle Damaged
-
+        🔧 Vehicle Damaged
     </button>
 
     <button class="opt"
     onclick="selectIssue(this,'Security Issue')">
-
-    🛡️ Security Issue
-
+        🛡️ Security Issue
     </button>
 
     <button class="opt"
     onclick="selectIssue(this,'Other Issue')">
-
-    ❓ Other Issue
-
+        ❓ Other Issue
     </button>
 
-    <!-- Send -->
+    <!-- Send Button -->
 
     <button
     id="sendBtn"
     onclick="sendAlert()"
     disabled>
 
-    🚨 Send Alert
+        🚨 Send Alert
 
     </button>
 
 </div>
 
-<!-- Success -->
+<!-- =========================
+     Success Popup
+========================== -->
 
 <div id="success">
 
-<div class="success-card">
+    <div class="success-card">
 
-<h2>
+        <h2>✅ Alert Sent Successfully</h2>
 
-✅ Alert Sent Successfully
-
-</h2>
-
-<p>
-
-Vehicle Owner has been notified.
-
-</p>
-
-</div>
-
-</div>
-<!-- Confirm Popup -->
-
-<div id="confirmPopup">
-
-  <div class="confirm-card">
-
-    <h2>⚠️ Confirm Alert</h2>
-
-    <p>Are you sure you want to send this alert?</p>
-
-    <div class="confirm-buttons">
-
-      <button onclick="closeConfirm()">
-        Cancel
-      </button>
-
-      <button onclick="confirmSend()">
-        Send Alert
-      </button>
+        <p>
+            Vehicle Owner has been notified successfully.
+        </p>
 
     </div>
 
-  </div>
+</div>
 
- </div>
+<!-- =========================
+     Confirmation Popup
+========================== -->
+
+<div id="confirmPopup">
+
+    <div class="confirm-card">
+
+        <h2>⚠️ Confirm Alert</h2>
+
+        <p>
+            Are you sure you want to notify the vehicle owner?
+        </p>
+
+        <div class="confirm-buttons">
+
+            <button
+            id="cancelBtn"
+            onclick="closeConfirm()">
+
+                Cancel
+
+            </button>
+
+            <button
+            id="confirmBtn"
+            onclick="confirmSend()">
+
+                Send Alert
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Load Script -->
 
 <script src="script.js"></script>
 
