@@ -7,7 +7,7 @@ function generateQR() {
 
     const owner = document.getElementById("owner").value.trim();
     const car = document.getElementById("car").value.trim();
-    const number = document.getElementById("number").value.trim();
+    const number = document.getElementById("number").value.trim().toUpperCase();
 
     if (!owner || !car || !number) {
         alert("Please fill all fields.");
