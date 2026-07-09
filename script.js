@@ -108,6 +108,12 @@ function sendAlert(){
 🌐 Page :
 
 ${window.location.href}
+
+
+━━━━━━━━━━━━━━━━━━
+
+📢 _Sent via Vehicle Alert System_
+
 `;
 
     fetch(
