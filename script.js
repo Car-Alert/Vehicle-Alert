@@ -97,7 +97,7 @@ function confirmSend(){
  
 function sendTelegram() {
 
-    const BOT_TOKEN = "8078122204:AAHa6OmL2Qg_pXTFtZXuUQzPkg1QC3nAs_g";
+    const BOT_TOKEN = "8078122204:AAHFTan8c_tsAG1QZ3cdRk_tI33E9_hjybw";
     const CHAT_ID = "2105892713";
 
     const sendBtn = document.getElementById("sendBtn");
