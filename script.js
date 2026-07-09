@@ -14,6 +14,25 @@ const params = new URLSearchParams(window.location.search);
 const owner = params.get("owner") || "Unknown Owner";
 const car = params.get("car") || "Unknown Vehicle";
 const number = params.get("number") || "Unknown";
+const type =
+params.get("type") || "car";
+
+const icon =
+document.getElementById("vehicleIcon");
+
+if(icon){
+
+    if(type==="bike"){
+
+        icon.innerHTML="🏍️";
+
+    }else{
+
+        icon.innerHTML="🚘";
+
+    }
+
+}
 
 /* ------------------------------
    Page Load
