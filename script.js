@@ -4,6 +4,7 @@
 ========================================== */
 
 let selectedIssue = "";
+let confirmIssue = "";
 
 /* ------------------------------
    Load Vehicle Details
