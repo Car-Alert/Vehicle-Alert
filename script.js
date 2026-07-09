@@ -95,7 +95,34 @@ function confirmSend(){
    Telegram
 ------------------------------ */
 
-function sendTelegram(){
+function sendTelegram()
+if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            sendTelegramMessage(lat, lon);
+
+        },
+
+        function(){
+
+            sendTelegramMessage(null, null);
+
+        }
+
+    );
+
+}else{
+
+    sendTelegramMessage(null, null);
+
+}
+{
 
     const BOT_TOKEN = "8078122204:AAHa6OmL2Qg_pXTFtZXuUQzPkg1QC3nAs_g";
     const CHAT_ID = "2105892713";
