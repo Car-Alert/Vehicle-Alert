@@ -24,7 +24,7 @@ const type = document.getElementById("vehicleType").value;
     const baseURL = "https://car-alert.github.io/Vehicle-Alert/";
 
     const vehicleURL =
-        `${baseURL}?owner=${encodeURIComponent(owner)}&car=${encodeURIComponent(car)}&number=${encodeURIComponent(number)}`;
+`${baseURL}?type=${encodeURIComponent(type)}&owner=${encodeURIComponent(owner)}&car=${encodeURIComponent(car)}&number=${encodeURIComponent(number)}`;
 
     const qrURL =
         `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(vehicleURL)}`;
