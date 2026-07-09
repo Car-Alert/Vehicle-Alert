@@ -79,11 +79,10 @@ h1{
 }
 
 .owner{
-
-    color:#475569;
-
-    font-size:22px;
-
+    color:#111827;
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:0.5px;
     margin-bottom:18px;
 
 }
