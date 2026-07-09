@@ -94,64 +94,22 @@ function confirmSend(){
 /* ------------------------------
    Telegram
 ------------------------------ */
+ 
+function sendTelegram() {
 
-function sendTelegram(){
-
-    const BOT_TOKEN = "8078122204:AAHa6OmL2Qg_pXTFtZXuUQzPkg1QC3nAs_g";
+    const BOT_TOKEN = "YOUR_FULL_BOT_TOKEN";
     const CHAT_ID = "2105892713";
 
-    if (navigator.geolocation) {
+    const sendBtn = document.getElementById("sendBtn");
+    sendBtn.innerHTML = "📍 Getting Location...";
 
-        
-            const sendBtn = document.getElementById("sendBtn");
-sendBtn.innerHTML = "📍 Getting Location...";
+    function sendTelegramMessage(lat, lon) {
 
-navigator.geolocation.getCurrentPosition(
+        const locationText = (lat !== null && lon !== null)
+            ? `📍 Sender Location\nhttps://maps.google.com/?q=${lat},${lon}`
+            : `📍 Sender Location\nPermission Denied`;
 
-    function(position){
-
-        sendBtn.innerHTML = "🚨 Sending Alert...";
-
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        sendTelegramMessage(lat, lon);
-
-    },
-
-    function(){
-
-        sendBtn.innerHTML = "🚨 Sending Alert...";
-
-        sendTelegramMessage(null, null);
-
-    },
-
-    {
-        enableHighAccuracy: true,
-        timeout: 8000,
-        maximumAge: 0
-    }
-
-);
-
-}
-else {
-
-        sendTelegramMessage(null, null);
-
-    }
-
-
-    function sendTelegramMessage(lat, lon){
-
-        const locationText = (lat && lon)
-        ? `📍 Sender Location\nhttps://maps.google.com/?q=${lat},${lon}`
-        : `📍 Sender Location\nPermission Denied`;
-
-        const message =
-
-`🚨 VEHICLE ALERT
+        const message = `🚨 VEHICLE ALERT
 
 👤 Owner: ${owner}
 
@@ -171,31 +129,26 @@ ${window.location.href}
 ━━━━━━━━━━━━━━━━━━
 📢 Sent via Vehicle Alert System`;
 
+        sendBtn.innerHTML = "🚨 Sending Alert...";
+
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-
             method: "POST",
-
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-
             body: `chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
-
         })
-
         .then(res => res.json())
-
         .then(data => {
 
-            if(data.ok){
+            if (data.ok) {
 
                 showSuccess();
 
-            }else{
-
-                const sendBtn = document.getElementById("sendBtn");
+            } else {
 
                 sendBtn.disabled = false;
+                sendBtn.classList.add("active");
                 sendBtn.innerHTML = "🚨 Send Alert";
 
                 alert("Telegram Error: " + data.description);
@@ -203,17 +156,50 @@ ${window.location.href}
             }
 
         })
+        .catch(err => {
 
-        .catch(() => {
-
-            const sendBtn = document.getElementById("sendBtn");
+            console.error(err);
 
             sendBtn.disabled = false;
+            sendBtn.classList.add("active");
             sendBtn.innerHTML = "🚨 Send Alert";
 
             alert("Network Error");
 
         });
+
+    }
+
+    if ("geolocation" in navigator) {
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                sendTelegramMessage(
+                    position.coords.latitude,
+                    position.coords.longitude
+                );
+
+            },
+
+            function() {
+
+                sendTelegramMessage(null, null);
+
+            },
+
+            {
+                enableHighAccuracy: true,
+                timeout: 8000,
+                maximumAge: 0
+            }
+
+        );
+
+    } else {
+
+        sendTelegramMessage(null, null);
 
     }
 
