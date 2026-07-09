@@ -117,7 +117,8 @@ if (navigator.geolocation) {
 
     );
 
-}else{
+}
+else{
 
     sendTelegramMessage(null, null);
 
