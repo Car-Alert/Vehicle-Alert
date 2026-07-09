@@ -86,6 +86,18 @@ sendBtn.innerHTML = "⏳ Sending Alert...";
 
     }
 
+ const confirmAlert = confirm(
+`Send this alert?
+
+Issue: ${selectedIssue}
+
+Do you want to continue?`
+);
+
+if (!confirmAlert) {
+    return;
+}
+
     // Telegram
 
     const BOT_TOKEN =
