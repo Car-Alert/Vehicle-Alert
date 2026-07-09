@@ -135,7 +135,8 @@ navigator.geolocation.getCurrentPosition(
 
 );
 
-     else {
+     }
+else {
 
         sendTelegramMessage(null, null);
 
