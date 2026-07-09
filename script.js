@@ -71,13 +71,13 @@ function selectIssue(button, issue){
    Send Telegram Alert
 ------------------------------ */
 
-function sendAlert()
+function sendAlert(){
 
 const sendBtn = document.getElementById("sendBtn");
 
 sendBtn.disabled = true;
 sendBtn.innerHTML = "⏳ Sending Alert...";
-{
+
 
     if(selectedIssue===""){
 
