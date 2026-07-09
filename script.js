@@ -84,10 +84,10 @@ function sendAlert(){
     // Telegram
 
     const BOT_TOKEN =
-    "YOUR_BOT_TOKEN";
+    "8078122204:AAHa6OmL2Qg_pXTFtZXuUQzPkg1QC3nAs_g";
 
     const CHAT_ID =
-    "YOUR_CHAT_ID";
+    "2105892713";
 
     // Message
 
