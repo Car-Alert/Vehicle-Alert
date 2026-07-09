@@ -4,7 +4,6 @@
 ========================================== */
 
 let selectedIssue = "";
-let confirmIssue = "";
 
 /* ------------------------------
    Load Vehicle Details
@@ -12,14 +11,9 @@ let confirmIssue = "";
 
 const params = new URLSearchParams(window.location.search);
 
-const owner =
-params.get("owner") || "Unknown Owner";
-
-const car =
-params.get("car") || "Unknown Vehicle";
-
-const number =
-params.get("number") || "Unknown";
+const owner = params.get("owner") || "Unknown Owner";
+const car = params.get("car") || "Unknown Vehicle";
+const number = params.get("number") || "Unknown";
 
 /* ------------------------------
    Page Load
@@ -27,21 +21,15 @@ params.get("number") || "Unknown";
 
 window.onload = () => {
 
-    // Vehicle Details
-
     const ownerEl = document.getElementById("ownerName");
     const carEl = document.getElementById("carName");
     const plateEl = document.getElementById("plateNumber");
 
-    if(ownerEl) ownerEl.textContent = owner;
-
-    if(carEl) carEl.textContent = car;
-
-    if(plateEl) plateEl.textContent = number;
-
+    if (ownerEl) ownerEl.textContent = owner;
+    if (carEl) carEl.textContent = car;
+    if (plateEl) plateEl.textContent = number;
 
 };
-
 
 /* ------------------------------
    Select Issue
@@ -57,48 +45,60 @@ function selectIssue(button, issue){
 
     button.classList.add("active");
 
-    const sendBtn =
-    document.getElementById("sendBtn");
-
+    const sendBtn = document.getElementById("sendBtn");
     sendBtn.disabled = false;
-
     sendBtn.classList.add("active");
-
 }
 
-
 /* ------------------------------
-   Send Telegram Alert
+   Open Confirm Popup
 ------------------------------ */
 
 function sendAlert(){
 
-const sendBtn = document.getElementById("sendBtn");
-
-sendBtn.disabled = true;
-sendBtn.innerHTML = "⏳ Sending Alert...";
-
-
-    if(selectedIssue===""){
-
+    if(selectedIssue === ""){
         alert("Please select an issue.");
-
         return;
-
     }
 
- document.getElementById("confirmPopup").classList.add("show");
-return;
+    document.getElementById("confirmPopup").classList.add("show");
+}
 
-    // Telegram
+/* ------------------------------
+   Close Confirm Popup
+------------------------------ */
 
-    const BOT_TOKEN =
-    "8078122204:AAHa6OmL2Qg_pXTFtZXuUQzPkg1QC3nAs_g";
+function closeConfirm(){
 
-    const CHAT_ID =
-    "2105892713";
+    document.getElementById("confirmPopup").classList.remove("show");
 
-    // Message
+}
+
+/* ------------------------------
+   Confirm & Send
+------------------------------ */
+
+function confirmSend(){
+
+    document.getElementById("confirmPopup").classList.remove("show");
+
+    const sendBtn = document.getElementById("sendBtn");
+
+    sendBtn.disabled = true;
+    sendBtn.innerHTML = "⏳ Sending Alert...";
+
+    sendTelegram();
+
+}
+
+/* ------------------------------
+   Telegram
+------------------------------ */
+
+function sendTelegram(){
+
+    const BOT_TOKEN = "YOUR_BOT_TOKEN";
+    const CHAT_ID = "YOUR_CHAT_ID";
 
     const message =
 
@@ -118,55 +118,55 @@ return;
 
 ${window.location.href}
 
-
 ━━━━━━━━━━━━━━━━━━
 
-📢 _Sent via Vehicle Alert System_
+📢 Sent via Vehicle Alert System`;
 
-`;
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
 
-    fetch(
-`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
-{
+        method:"POST",
 
-method:"POST",
+        headers:{
+            "Content-Type":"application/x-www-form-urlencoded"
+        },
 
-headers:{
-"Content-Type":"application/x-www-form-urlencoded"
-},
+        body:`chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
 
-body:
+    })
 
-`chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
+    .then(res=>res.json())
+
+    .then(data=>{
+
+        if(data.ok){
+
+            showSuccess();
+
+        }else{
+
+            const sendBtn=document.getElementById("sendBtn");
+
+            sendBtn.disabled=false;
+            sendBtn.innerHTML="🚨 Send Alert";
+
+            alert("Telegram Error : "+data.description);
+
+        }
+
+    })
+
+    .catch(()=>{
+
+        const sendBtn=document.getElementById("sendBtn");
+
+        sendBtn.disabled=false;
+        sendBtn.innerHTML="🚨 Send Alert";
+
+        alert("Network Error");
+
+    });
 
 }
-
-)
-
-.then(res=>res.json())
-
-.then(data=>{
-
-if(data.ok){
-
-showSuccess();
-
-}else{
-
-alert("Telegram Error : " + data.description);
-
-}
-
-})
-
-.catch(()=>{
-
-alert("Network Error");
-
-});
-
-}
-
 
 /* ------------------------------
    Success Popup
@@ -174,19 +174,13 @@ alert("Network Error");
 
 function showSuccess(){
 
-    const popup = document.getElementById("success");
+    const popup=document.getElementById("success");
 
     popup.classList.add("show");
 
     setTimeout(()=>{
 
         popup.classList.remove("show");
-
-        const sendBtn = document.getElementById("sendBtn");
-
-        sendBtn.innerHTML = "🚨 Send Alert";
-        sendBtn.disabled = true;
-        sendBtn.classList.remove("active");
 
         location.reload();
 
