@@ -124,7 +124,23 @@ function confirmSend(){
    Telegram
 ------------------------------ */
  
-function sendTelegram() {
+function sendTelegram()
+let issueText = selectedIssue;
+
+if(selectedIssue === "Other Issue"){
+
+    const txt = document.getElementById("otherIssue").value.trim();
+
+    if(txt === ""){
+        alert("Please enter your issue.");
+        return;
+    }
+
+    issueText = txt;
+
+}
+
+ {
 
     const BOT_TOKEN = "8078122204:AAHFTan8c_tsAG1QZ3cdRk_tI33E9_hjybw";
 
