@@ -14,6 +14,7 @@ const params = new URLSearchParams(window.location.search);
 const owner = params.get("owner") || "Unknown Owner";
 const car = params.get("car") || "Unknown Vehicle";
 const number = params.get("number") || "Unknown";
+const mobile = params.get("mobile") || "";
 const type = params.get("type") || "car";
 
 /* ------------------------------
