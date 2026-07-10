@@ -1,6 +1,6 @@
 /* ==========================================
    VEHICLE ALERT SYSTEM
-   FINAL SCRIPT.JS
+   FINAL PREMIUM SCRIPT.JS
 ========================================== */
 
 let selectedIssue = "";
@@ -14,25 +14,7 @@ const params = new URLSearchParams(window.location.search);
 const owner = params.get("owner") || "Unknown Owner";
 const car = params.get("car") || "Unknown Vehicle";
 const number = params.get("number") || "Unknown";
-const type =
-params.get("type") || "car";
-
-const icon =
-document.getElementById("vehicleIcon");
-
-if(icon){
-
-    if(type==="bike"){
-
-        icon.innerHTML="🏍️";
-
-    }else{
-
-        icon.innerHTML="🚘";
-
-    }
-
-}
+const type = params.get("type") || "car";
 
 /* ------------------------------
    Page Load
@@ -40,6 +22,7 @@ if(icon){
 
 window.onload = () => {
 
+    // Vehicle Details
     const ownerEl = document.getElementById("ownerName");
     const carEl = document.getElementById("carName");
     const plateEl = document.getElementById("plateNumber");
@@ -48,73 +31,128 @@ window.onload = () => {
     if (carEl) carEl.textContent = car;
     if (plateEl) plateEl.textContent = number;
 
+    // Vehicle Icon
+    const icon = document.getElementById("vehicleIcon");
+
+    if (icon) {
+
+        switch (type) {
+
+            case "bike":
+                icon.innerHTML = "🏍️";
+                break;
+
+            default:
+                icon.innerHTML = "🚘";
+
+        }
+
+    }
+
+    // Character Counter
+    const otherIssue = document.getElementById("otherIssue");
+
+    if (otherIssue) {
+
+        otherIssue.addEventListener("input", function () {
+
+            const count = document.getElementById("charCount");
+
+            if (count) {
+                count.innerHTML = this.value.length + " / 200";
+            }
+
+        });
+
+    }
+
 };
 
 /* ------------------------------
    Select Issue
 ------------------------------ */
 
-function selectIssue(button, issue){
+function selectIssue(button, issue) {
 
     selectedIssue = issue;
 
-    document.querySelectorAll(".opt").forEach(btn=>{
+    document.querySelectorAll(".opt").forEach(btn => {
         btn.classList.remove("active");
     });
 
     button.classList.add("active");
 
     const sendBtn = document.getElementById("sendBtn");
+
     sendBtn.disabled = false;
     sendBtn.classList.add("active");
 
-    // Show/Hide Other Issue Textbox
+    // Other Issue Textbox
+
     const box = document.getElementById("otherIssue");
 
-    if(issue === "Other Issue"){
-        box.style.display = "block";
-    }else{
-        box.style.display = "none";
-        box.value = "";
+    if (box) {
+
+        if (issue === "Other Issue") {
+
+            box.style.display = "block";
+            box.focus();
+
+        } else {
+
+            box.style.display = "none";
+            box.value = "";
+
+            const count = document.getElementById("charCount");
+
+            if (count) {
+                count.innerHTML = "0 / 200";
+            }
+
+        }
+
     }
+
 }
 
 /* ------------------------------
-   Open Confirm Popup
+   Send Alert
 ------------------------------ */
 
-function sendAlert(){
+function sendAlert() {
 
-    if(selectedIssue === ""){
+    if (selectedIssue === "") {
         alert("Please select an issue.");
         return;
     }
 
     document.getElementById("confirmPopup").classList.add("show");
+
 }
 
 /* ------------------------------
-   Close Confirm Popup
+   Close Confirm
 ------------------------------ */
 
-function closeConfirm(){
+function closeConfirm() {
 
     document.getElementById("confirmPopup").classList.remove("show");
 
 }
 
 /* ------------------------------
-   Confirm & Send
+   Confirm Send
 ------------------------------ */
 
-function confirmSend(){
+function confirmSend() {
 
     document.getElementById("confirmPopup").classList.remove("show");
 
     const sendBtn = document.getElementById("sendBtn");
 
     sendBtn.disabled = true;
-    sendBtn.innerHTML = "⏳ Sending Alert...";
+    sendBtn.classList.remove("active");
+    sendBtn.innerHTML = "📍 Getting Location...";
 
     sendTelegram();
 
@@ -123,35 +161,43 @@ function confirmSend(){
 /* ------------------------------
    Telegram
 ------------------------------ */
- 
-function sendTelegram()
-let issueText = selectedIssue;
 
-if(selectedIssue === "Other Issue"){
+function sendTelegram() {
 
-    const txt = document.getElementById("otherIssue").value.trim();
+    // Custom Issue
 
-    if(txt === ""){
-        alert("Please enter your issue.");
-        return;
+    let issueText = selectedIssue;
+
+    if (selectedIssue === "Other Issue") {
+
+        const txt = document.getElementById("otherIssue").value.trim();
+
+        if (txt === "") {
+
+            alert("Please describe the issue.");
+
+            const sendBtn = document.getElementById("sendBtn");
+
+            sendBtn.disabled = false;
+            sendBtn.classList.add("active");
+            sendBtn.innerHTML = "🚨 Send Alert";
+
+            return;
+
+        }
+
+        issueText = txt;
+
     }
 
-    issueText = txt;
-
-}
-
- {
-
-    const BOT_TOKEN = "8078122204:AAHFTan8c_tsAG1QZ3cdRk_tI33E9_hjybw";
-
-    const CHAT_ID = "2105892713";
+    const BOT_TOKEN = "YOUR_BOT_TOKEN";
+    const CHAT_ID = "YOUR_CHAT_ID";
 
     const sendBtn = document.getElementById("sendBtn");
-    sendBtn.innerHTML = "📍 Getting Location...";
 
     function sendTelegramMessage(lat, lon) {
 
-        const locationText = (lat !== null && lon !== null)
+        const locationText = (lat && lon)
             ? `📍 Sender Location\nhttps://maps.google.com/?q=${lat},${lon}`
             : `📍 Sender Location\nPermission Denied`;
 
@@ -163,7 +209,7 @@ if(selectedIssue === "Other Issue"){
 
 🚗 Number: ${number}
 
-⚠️ Issue: ${selectedIssue}
+⚠️ Issue: ${issueText}
 
 ${locationText}
 
@@ -178,13 +224,20 @@ ${window.location.href}
         sendBtn.innerHTML = "🚨 Sending Alert...";
 
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+
             method: "POST",
+
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: `chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
+
+            body:
+                `chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
+
         })
+
         .then(res => res.json())
+
         .then(data => {
 
             if (data.ok) {
@@ -197,14 +250,13 @@ ${window.location.href}
                 sendBtn.classList.add("active");
                 sendBtn.innerHTML = "🚨 Send Alert";
 
-                alert("Telegram Error: " + data.description);
+                alert("Telegram Error : " + data.description);
 
             }
 
         })
-        .catch(err => {
 
-            console.error(err);
+        .catch(() => {
 
             sendBtn.disabled = false;
             sendBtn.classList.add("active");
@@ -250,23 +302,55 @@ ${window.location.href}
     }
 
 }
-
 /* ------------------------------
    Success Popup
 ------------------------------ */
 
-function showSuccess(){
+function showSuccess() {
 
-    const popup=document.getElementById("success");
+    const popup = document.getElementById("success");
 
     popup.classList.add("show");
 
-    setTimeout(()=>{
+    const sendBtn = document.getElementById("sendBtn");
+
+    sendBtn.innerHTML = "✅ Alert Sent";
+    sendBtn.disabled = true;
+
+    // Reset after 3 seconds
+
+    setTimeout(() => {
 
         popup.classList.remove("show");
 
-        location.reload();
+        // Reset Issue Buttons
+        document.querySelectorAll(".opt").forEach(btn => {
+            btn.classList.remove("active");
+        });
 
-    },3000);
+        // Hide Other Issue Box
+        const box = document.getElementById("otherIssue");
+
+        if (box) {
+            box.style.display = "none";
+            box.value = "";
+        }
+
+        // Reset Counter
+        const count = document.getElementById("charCount");
+
+        if (count) {
+            count.innerHTML = "0 / 200";
+        }
+
+        // Reset Button
+        sendBtn.innerHTML = "🚨 Send Alert";
+        sendBtn.disabled = true;
+        sendBtn.classList.remove("active");
+
+        // Reset Selected Issue
+        selectedIssue = "";
+
+    }, 3000);
 
 }
