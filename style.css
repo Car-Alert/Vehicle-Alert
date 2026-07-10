@@ -413,3 +413,59 @@ height:150px;
     resize:none;
     outline:none;
 }
+
+/* Call + SMS Buttons */
+
+.action-row{
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+}
+
+.action-row button{
+
+    flex:1;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+#callBtn{
+
+    background:#16a34a;
+
+    color:#fff;
+
+}
+
+#callBtn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+#smsBtn{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+#smsBtn:hover{
+
+    transform:translateY(-2px);
+
+}
