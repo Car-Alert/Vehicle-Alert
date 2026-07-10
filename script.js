@@ -67,14 +67,16 @@ function selectIssue(button, issue){
     const sendBtn = document.getElementById("sendBtn");
     sendBtn.disabled = false;
     sendBtn.classList.add("active");
-const box = document.getElementById("otherIssue");
 
-if(issue === "Other Issue"){
-    box.style.display = "block";
-}else{
-    box.style.display = "none";
-    box.value = "";
-}
+    // Show/Hide Other Issue Textbox
+    const box = document.getElementById("otherIssue");
+
+    if(issue === "Other Issue"){
+        box.style.display = "block";
+    }else{
+        box.style.display = "none";
+        box.value = "";
+    }
 }
 
 /* ------------------------------
