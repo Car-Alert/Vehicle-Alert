@@ -190,8 +190,8 @@ function sendTelegram() {
 
     }
 
-    const BOT_TOKEN = "YOUR_BOT_TOKEN";
-    const CHAT_ID = "YOUR_CHAT_ID";
+    const BOT_TOKEN = "8078122204:AAHFTan8c_tsAG1QZ3cdRk_tI33E9_hjybw";
+    const CHAT_ID = "2105892713";
 
     const sendBtn = document.getElementById("sendBtn");
 
