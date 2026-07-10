@@ -8,6 +8,7 @@ function generateQR() {
     const owner = document.getElementById("owner").value.trim();
     const car = document.getElementById("car").value.trim();
     const number = document.getElementById("number").value.trim().toUpperCase();
+ const photo = document.getElementById("photo").value.trim();
  const type = document.getElementById("vehicleType").value;
 
     if (!owner || !car || !number) {
