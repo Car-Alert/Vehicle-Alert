@@ -355,3 +355,33 @@ function showSuccess() {
     }, 3000);
 
 }
+
+function sendSMS() {
+
+    let issueText = selectedIssue;
+
+    if (selectedIssue === "Other Issue") {
+
+        const txt = document.getElementById("otherIssue").value.trim();
+
+        if (txt === "") {
+            alert("Please enter your issue.");
+            return;
+        }
+
+        issueText = txt;
+    }
+
+    const message =
+`🚨 VEHICLE ALERT
+
+Vehicle: ${car}
+
+Number: ${number}
+
+Issue: ${issueText}`;
+
+    window.location.href =
+`sms:${mobile}?body=${encodeURIComponent(message)}`;
+
+}
