@@ -442,3 +442,16 @@ Sent via Vehicle Alert`;
     }
 
 }
+function callOwner(){
+
+    if(!mobile){
+
+        alert("Owner mobile number not available.");
+
+        return;
+
+    }
+
+    window.location.href = `tel:${mobile}`;
+
+}
