@@ -1,18 +1,25 @@
-/* ===========================
-   VEHICLE ALERT SYSTEM
+/* ==================================================
+   VEHICLE ALERT V3.0
    FINAL PREMIUM UI
-=========================== */
+================================================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',Arial,sans-serif;
+    -webkit-tap-highlight-color:transparent;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+html{
+
+    height:100%;
+
+    overflow-x:hidden;
+
 }
 
 body{
-
-    margin:0;
 
     min-height:100vh;
 
@@ -24,7 +31,9 @@ body{
 
     align-items:center;
 
-    padding:12px;
+    padding:10px;
+
+    overflow-x:hidden;
 
 }
 
@@ -32,34 +41,49 @@ body{
 
     width:100%;
 
-    max-width:430px;
+    max-width:420px;
 
-    background:#fff;
+    background:#ffffff;
 
     border-radius:24px;
 
-    padding:18px;
+    padding:16px;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.18);
-
-    margin:auto;
+    box-shadow:
+    0 18px 45px rgba(0,0,0,.20);
 
 }
+
 h1{
+
     text-align:center;
+
+    font-size:34px;
+
+    font-weight:700;
+
     color:#111827;
-    font-size:30px;
+
+    margin-bottom:4px;
+
 }
 
 .subtitle{
-    text-align:center;
-    color:#6b7280;
-    margin-top:8px;
-    margin-bottom:20px;
-    font-size:14px;
-}
 
-/* Vehicle Card */
+    text-align:center;
+
+    font-size:13px;
+
+    color:#6b7280;
+
+    margin-bottom:16px;
+
+    letter-spacing:.3px;
+
+}
+/* =====================================
+   VEHICLE CARD (FINAL PREMIUM)
+===================================== */
 
 .vehicle-card{
 
@@ -67,112 +91,150 @@ h1{
 
     border-radius:20px;
 
-    padding:22px;
+    padding:14px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-    margin-bottom:22px;
+    margin-bottom:14px;
 
     text-align:center;
+
+    box-shadow:0 8px 22px rgba(0,0,0,.08);
 
 }
 
 .car-icon{
 
-    font-size:46px;
+    font-size:34px;
 
-    margin-bottom:10px;
+    margin-bottom:4px;
+
+    line-height:1;
 
 }
 
 #carName{
 
-    color:#0f172a;
+    font-size:20px;
 
-    font-size:26px;
+    font-weight:700;
+
+    color:#111827;
+
+    margin-bottom:4px;
+
+}
+
+.owner{
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#475569;
 
     margin-bottom:10px;
 
 }
 
-.owner{
-    color:#111827;
-    font-size:22px;
-    font-weight:700;
-    letter-spacing:0.5px;
-    margin-bottom:18px;
-
-}
-
 /* ==========================
-   REAL INDIAN NUMBER PLATE
+   NUMBER PLATE
 ========================== */
 
 .number-plate{
-    width:310px;
+
+    width:280px;
+
     max-width:100%;
-    height:72px;
-    margin:20px auto;
+
+    height:54px;
+
+    margin:10px auto 0;
+
     display:flex;
+
     overflow:hidden;
-    background:#fff;
+
     border:3px solid #111;
+
     border-radius:12px;
-    box-shadow:0 8px 18px rgba(0,0,0,.15);
+
+    background:#fff;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.15);
+
 }
 
 .plate-left{
-    width:60px;
+
+    width:52px;
+
     background:#003399;
+
     color:#fff;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    font-size:20px;
+
+    font-size:17px;
+
     font-weight:bold;
+
     border-right:2px solid #111;
+
 }
 
 .plate-right{
+
     flex:1;
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    background:#fff;
+
 }
 
 #plateNumber{
+
     font-family:"Arial Black",Arial,sans-serif;
-    font-size:32px;
+
+    font-size:22px;
+
     font-weight:900;
+
+    letter-spacing:1px;
+
     color:#111;
-    letter-spacing:2px;
+
     text-transform:uppercase;
+
 }
-
-
-
-/* Buttons */
+/* =====================================
+   ISSUE BUTTONS (FINAL)
+===================================== */
 
 .opt{
 
     width:100%;
 
-    height:56px;
+    height:42px;
 
-    padding:15px;
-
-    margin:12px 0;
+    margin:6px 0;
 
     border:none;
 
-    border-radius:15px;
+    border-radius:12px;
 
     background:#eef4ff;
 
     color:#1e293b;
 
-    font-size:18px;
+    font-size:15px;
+
+    font-weight:600;
 
     cursor:pointer;
 
@@ -182,11 +244,11 @@ h1{
 
 .opt:hover{
 
-    transform:translateY(-2px);
-
     background:#2563eb;
 
-    color:white;
+    color:#fff;
+
+    transform:translateY(-1px);
 
 }
 
@@ -194,33 +256,119 @@ h1{
 
     background:#16a34a;
 
-    color:white;
+    color:#fff;
 
 }
 
-/* Send Button */
+/* =====================================
+   OTHER ISSUE
+===================================== */
+
+#otherIssue{
+
+    display:none;
+
+    width:100%;
+
+    height:70px;
+
+    margin-top:8px;
+
+    padding:10px;
+
+    border:2px solid #dbeafe;
+
+    border-radius:10px;
+
+    font-size:14px;
+
+    resize:none;
+
+    outline:none;
+
+}
+
+/* =====================================
+   CALL + SMS
+===================================== */
+
+.action-row{
+
+    display:flex;
+
+    gap:8px;
+
+    margin-top:10px;
+
+}
+
+.action-row button{
+
+    flex:1;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.action-row button:hover{
+
+    transform:translateY(-1px);
+
+}
+
+#callBtn{
+
+    background:#16a34a;
+
+}
+
+#smsBtn{
+
+    background:#2563eb;
+
+}
+
+/* =====================================
+   SEND ALERT
+===================================== */
 
 #sendBtn{
 
     width:100%;
 
-    padding:16px;
+    height:46px;
 
-    margin-top:12px;
+    margin-top:10px;
 
     border:none;
 
-    border-radius:14px;
-
-    font-size:17px;
-
-    font-weight:bold;
-
-    color:white;
+    border-radius:12px;
 
     background:#94a3b8;
 
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:700;
+
     cursor:not-allowed;
+
+    transition:.25s;
 
 }
 
@@ -231,8 +379,9 @@ h1{
     cursor:pointer;
 
 }
-
-/* Success Popup */
+/* =====================================
+   SUCCESS POPUP
+===================================== */
 
 #success{
 
@@ -246,7 +395,7 @@ h1{
 
     align-items:center;
 
-    background:rgba(0,0,0,.80);
+    background:rgba(0,0,0,.70);
 
     z-index:9999;
 
@@ -260,19 +409,21 @@ h1{
 
 .success-card{
 
-    background:white;
+    width:90%;
 
-    padding:30px;
+    max-width:300px;
 
-    border-radius:20px;
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:22px;
 
     text-align:center;
 
-    width:90%;
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
 
-    max-width:320px;
-
-    animation:pop .35s ease;
+    animation:pop .25s ease;
 
 }
 
@@ -280,227 +431,444 @@ h1{
 
     color:#16a34a;
 
-    margin-bottom:10px;
+    font-size:22px;
+
+    margin-bottom:8px;
 
 }
 
 .success-card p{
 
-    color:#475569;
+    color:#64748b;
+
+    font-size:15px;
 
 }
 
-@keyframes pop{
 
-from{
+/* =====================================
+   CONFIRM POPUP
+===================================== */
 
-transform:scale(.8);
+#confirmPopup{
 
-opacity:0;
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.70);
+
+    z-index:10000;
 
 }
 
-to{
-
-transform:scale(1);
-
-opacity:1;
-
-}
-
-}
-
-/* Mobile */
-
-@media (max-width:480px){
-
-    .container{
-        width:95%;
-        margin:15px auto;
-        padding:18px;
-        border-radius:20px;
-        height:auto;
-        min-height:auto;
-    }
-
-    .number-plate{
-        width:100%;
-        max-width:280px;
-        height:60px;
-    }
-
-    .plate-left{
-        width:55px;
-        font-size:17px;
-    }
-
-    #plateNumber{
-        font-size:24px;
-    }
-
-    .action-row{
+#confirmPopup.show{
 
     display:flex;
 
-    flex-direction:row;
+}
+
+.confirm-card{
+
+    width:90%;
+
+    max-width:320px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+
+    animation:pop .25s ease;
+
+}
+
+.confirm-card h2{
+
+    font-size:22px;
+
+    color:#111827;
+
+    margin-bottom:10px;
+
+}
+
+.confirm-card p{
+
+    color:#64748b;
+
+    line-height:1.5;
+
+    margin-bottom:18px;
+
+}
+
+.confirm-buttons{
+
+    display:flex;
 
     gap:10px;
 
 }
 
-.action-row button{
-
-    flex:1;
-
-    width:50%;
-
-    height:52px;
-
-    font-size:16px;
-
-}
-
-
-
-#qrCode{
-
-width:150px;
-
-height:150px;
-
-}
-
-}
-/* ==========================
-   Confirm Popup
-========================== */
-
-#confirmPopup{
-    position:fixed;
-    inset:0;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    background:rgba(0,0,0,.65);
-    z-index:10000;
-}
-
-#confirmPopup.show{
-    display:flex;
-}
-
-.confirm-card{
-    width:90%;
-    max-width:340px;
-    background:#fff;
-    border-radius:18px;
-    padding:25px;
-    text-align:center;
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
-    animation:pop .25s ease;
-}
-
-.confirm-card h2{
-    margin-bottom:12px;
-    color:#111827;
-}
-
-.confirm-card p{
-    color:#64748b;
-    margin-bottom:22px;
-    line-height:1.5;
-}
-
-.confirm-buttons{
-    display:flex;
-    gap:12px;
-}
-
 .confirm-buttons button{
+
     flex:1;
+
+    height:42px;
+
     border:none;
+
     border-radius:12px;
-    padding:13px;
+
     font-size:15px;
+
     font-weight:600;
+
     cursor:pointer;
+
 }
 
 .confirm-buttons button:first-child{
+
     background:#e5e7eb;
+
     color:#111827;
+
 }
 
 .confirm-buttons button:last-child{
+
     background:#ef4444;
+
     color:#fff;
+
 }
+
+
+/* =====================================
+   MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width:480px){
+
+    body{
+
+        padding:8px;
+
+    }
+
+    .container{
+
+        max-width:100%;
+
+        padding:14px;
+
+        border-radius:20px;
+
+    }
+
+    .number-plate{
+
+        width:260px;
+
+        height:50px;
+
+    }
+
+    .plate-left{
+
+        width:48px;
+
+        font-size:15px;
+
+    }
+
+    #plateNumber{
+
+        font-size:20px;
+
+    }
+
+}
+/* =====================================
+   FINAL PREMIUM POLISH
+===================================== */
+
+/* Smooth Animation */
+
+button,
+.vehicle-card,
+.container{
+
+    transition:all .25s ease;
+
+}
+
+/* Better Button Touch */
+
+button{
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+/* Compact Headings */
+
+h1{
+
+    line-height:1.1;
+
+}
+
+.subtitle{
+
+    line-height:1.3;
+
+}
+
+/* Compact Text */
+
+p{
+
+    line-height:1.3;
+
+}
+
+/* Textarea */
 
 #otherIssue{
-    display:none;
-    width:100%;
-    height:90px;
-    margin-top:10px;
-    padding:12px;
-    border-radius:12px;
-    border:2px solid #dbeafe;
-    font-size:15px;
-    resize:none;
+
+    margin-bottom:8px;
+
+}
+
+/* Hover Effects */
+
+.opt:hover,
+#callBtn:hover,
+#smsBtn:hover,
+#sendBtn.active:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:0 6px 14px rgba(0,0,0,.15);
+
+}
+
+/* Vehicle Card Hover */
+
+.vehicle-card:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* Container Shadow */
+
+.container{
+
+    overflow:hidden;
+
+}
+
+/* Prevent Horizontal Scroll */
+
+html,
+body{
+
+    overflow-x:hidden;
+
+}
+
+/* Small Phones */
+
+@media (max-height:700px){
+
+    h1{
+
+        font-size:30px;
+
+    }
+
+    .subtitle{
+
+        margin-bottom:10px;
+
+    }
+
+    .vehicle-card{
+
+        padding:12px;
+
+        margin-bottom:10px;
+
+    }
+
+    .opt{
+
+        height:40px;
+
+        margin:5px 0;
+
+        font-size:14px;
+
+    }
+
+    .action-row button{
+
+        height:40px;
+
+        font-size:14px;
+
+    }
+
+    #sendBtn{
+
+        height:44px;
+
+        font-size:15px;
+
+    }
+
+    #otherIssue{
+
+        height:60px;
+
+    }
+
+}
+/* ==========================================
+   VEHICLE ALERT V3.0 FINAL
+   FINAL OPTIMIZATION
+========================================== */
+
+/* Smooth scrolling */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+/* Images */
+
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+    display:block;
+
+}
+
+/* Inputs */
+
+input,
+textarea,
+button{
+
+    font-family:inherit;
+
+}
+
+/* Remove blue tap */
+
+button,
+input,
+textarea{
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+/* Better Focus */
+
+button:focus,
+input:focus,
+textarea:focus{
+
     outline:none;
-}
-
-/* Call + SMS Buttons */
-
-.action-row{
-    display:flex;
-    gap:12px;
-    margin-top:18px;
-}
-
-.action-row button{
-
-    flex:1;
-
-    height:55px;
-
-    border:none;
-
-    border-radius:14px;
-
-    font-size:17px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.25s;
 
 }
 
-#callBtn{
+/* Prevent text selection on buttons */
 
-    background:#16a34a;
+button{
 
-    color:#fff;
-
-}
-
-#callBtn:hover{
-
-    transform:translateY(-2px);
+    user-select:none;
 
 }
 
-#smsBtn{
+/* Better number plate */
 
-    background:#2563eb;
+.number-plate{
 
-    color:#fff;
+    overflow:hidden;
 
 }
 
-#smsBtn:hover{
+/* Vehicle Card */
 
-    transform:translateY(-2px);
+.vehicle-card{
+
+    border:1px solid rgba(0,0,0,.05);
+
+}
+
+/* Popup Animation */
+
+.confirm-card,
+.success-card{
+
+    animation:popup .25s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+
+        transform:scale(.92);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/* Better Button Press */
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+/* Disable horizontal scroll */
+
+body{
+
+    overflow-x:hidden;
 
 }
