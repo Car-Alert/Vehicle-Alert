@@ -8,10 +8,11 @@ function generateQR() {
     const owner = document.getElementById("owner").value.trim();
     const car = document.getElementById("car").value.trim();
     const number = document.getElementById("number").value.trim().toUpperCase();
+ const mobile = document.getElementById("mobile").value.trim();
  const photo = document.getElementById("photo").value.trim();
  const type = document.getElementById("vehicleType").value;
 
-    if (!owner || !car || !number) {
+    if (!owner || !car || !number || !mobile ) {
         alert("Please fill all fields.");
         return;
     }
@@ -25,7 +26,7 @@ function generateQR() {
     const baseURL = "https://car-alert.github.io/Vehicle-Alert/";
 
     const vehicleURL =
-`${baseURL}?type=${encodeURIComponent(type)}&owner=${encodeURIComponent(owner)}&car=${encodeURIComponent(car)}&number=${encodeURIComponent(number)}`;
+`${baseURL}?type=${encodeURIComponent(type)}&owner=${encodeURIComponent(owner)}&car=${encodeURIComponent(car)}&number=${encodeURIComponent(number)}&mobile=${encodeURIComponent(mobile)}`;
 
     const qrURL =
         `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(vehicleURL)}`;
