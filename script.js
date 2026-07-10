@@ -372,16 +372,73 @@ function sendSMS() {
         issueText = txt;
     }
 
-    const message =
+    function openSMS(lat, lon) {
+
+        const location =
+            (lat && lon)
+            ? `https://maps.google.com/?q=${lat},${lon}`
+            : "Location Permission Denied";
+
+        const message =
+
 `🚨 VEHICLE ALERT
 
-Vehicle: ${car}
+👤 Owner: ${owner}
 
-Number: ${number}
+🚘 Vehicle: ${car}
 
-Issue: ${issueText}`;
+🚗 Number: ${number}
 
-    window.location.href =
+⚠️ Issue: ${issueText}
+
+📍 Location:
+${location}
+
+🕒 Time:
+${new Date().toLocaleString()}
+
+🌐 Vehicle Page:
+${window.location.href}
+
+━━━━━━━━━━━━━━━━━━
+Sent via Vehicle Alert`;
+
+        window.location.href =
 `sms:${mobile}?body=${encodeURIComponent(message)}`;
+
+    }
+
+    if ("geolocation" in navigator) {
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position){
+
+                openSMS(
+                    position.coords.latitude,
+                    position.coords.longitude
+                );
+
+            },
+
+            function(){
+
+                openSMS(null, null);
+
+            },
+
+            {
+                enableHighAccuracy:true,
+                timeout:8000,
+                maximumAge:0
+            }
+
+        );
+
+    } else {
+
+        openSMS(null, null);
+
+    }
 
 }
