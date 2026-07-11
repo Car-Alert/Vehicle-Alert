@@ -627,21 +627,20 @@ select:focus{
 
 }
 
+/* ==========================================
+   HEADER LOGO
+========================================== */
+
 .logo-circle{
 
-    width:80px;
+    width:90px;
+    height:90px;
 
-    height:80px;
+    margin:0 auto 18px;
 
-    margin:auto;
-
-    margin-bottom:15px;
+    background:#ffffff;
 
     border-radius:50%;
-
-    background:rgba(255,255,255,.18);
-
-    border:2px solid rgba(255,255,255,.25);
 
     display:flex;
 
@@ -649,9 +648,18 @@ select:focus{
 
     align-items:center;
 
-    font-size:42px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
 
-    backdrop-filter:blur(8px);
+}
+
+.logo{
+
+    width:68px;
+    height:68px;
+
+    object-fit:contain;
+
+    display:block;
 
 }
 
