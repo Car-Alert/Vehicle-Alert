@@ -886,11 +886,11 @@ body{
 
 .logo-circle{
 
-    width:130px;
+    width:140px;
 
-    height:130px;
+    height:140px;
 
-    margin:0 auto 18px;
+    margin:0 auto 20px;
 
     background:#ffffff;
 
@@ -910,11 +910,13 @@ body{
 
 .siteLogo{
 
-    width:110px;
+    width:125px;
 
-    height:110px;
+    height:125px;
 
     object-fit:contain;
+
+    display:block;
 
 }
 
