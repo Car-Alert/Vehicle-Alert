@@ -1,139 +1,140 @@
 /* ==========================================
-   VEHICLE QR GENERATOR
-   FINAL ADMIN.JS
+   VEHICLE ALERT
+   ADMIN PANEL V2
+========================================== */
+
+let vehicleNumber = "";
+let vehicleQR = "";
+let vehicleLink = "";
+
+/* ==========================================
+   GENERATE QR
 ========================================== */
 
 function generateQR() {
 
     const owner = document.getElementById("owner").value.trim();
-    const car = document.getElementById("car").value.trim();
-    const number = document.getElementById("number").value.trim().toUpperCase();
- const mobile = document.getElementById("mobile").value.trim();
- const photo = document.getElementById("photo").value.trim();
- const type = document.getElementById("vehicleType").value;
 
-    if (!owner || !car || !number || !mobile ) {
+    const car = document.getElementById("car").value.trim();
+
+    const number = document.getElementById("number")
+        .value.trim()
+        .toUpperCase();
+
+    const mobile = document.getElementById("mobile")
+        .value.trim();
+
+    const type = document.getElementById("vehicleType")
+        .value;
+
+    if (!owner || !car || !number || !mobile) {
+
         alert("Please fill all fields.");
+
         return;
+
     }
 
-    /* IMPORTANT
-       Replace this URL with YOUR GitHub Pages URL
-       Example:
-       https://username.github.io/VehicleAlert/
-    */
+    vehicleNumber = number;
 
-    const baseURL = "https://car-alert.github.io/Vehicle-Alert/";
+    const baseURL =
+        "https://car-alert.github.io/Vehicle-Alert/";
 
-    const vehicleURL =
+    vehicleLink =
 `${baseURL}?type=${encodeURIComponent(type)}&owner=${encodeURIComponent(owner)}&car=${encodeURIComponent(car)}&number=${encodeURIComponent(number)}&mobile=${encodeURIComponent(mobile)}`;
 
-    const qrURL =
-        `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(vehicleURL)}`;
+    vehicleQR =
+`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(vehicleLink)}`;
 
     document.getElementById("result").style.display = "block";
 
     document.getElementById("result").innerHTML = `
-
+    
 <h2>✅ Vehicle Created</h2>
 
-<img id="qrImage" src="${qrURL}" alt="QR Code">
+<img
+id="qrImage"
+src="${vehicleQR}"
+alt="QR Code">
 
-<p style="margin-top:15px;font-weight:bold;">
+<p style="margin-top:18px;font-weight:bold;">
 Vehicle Link
 </p>
 
 <input
 type="text"
 id="vehicleLink"
-value="${vehicleURL}"
+value="${vehicleLink}"
 readonly>
 
-<button class="action-btn" onclick="copyLink()">
+<button
+class="action-btn"
+onclick="copyLink()">
+
 📋 Copy Link
+
 </button>
 
-<button class="download-btn" onclick="downloadQR()">
+<button
+class="download-btn"
+onclick="downloadQR()">
+
 💾 Download QR
+
 </button>
 
-<button class="sticker-btn" onclick="downloadSticker()">
+<button
+class="sticker-btn"
+onclick="downloadSticker()">
+
 🖼️ Download Sticker
+
 </button>
 
 `;
 
 }
+/* ==========================================
+   COPY VEHICLE LINK
+========================================== */
 
 function copyLink() {
 
-    const link = document.getElementById("vehicleLink");
+    const input = document.getElementById("vehicleLink");
 
-    link.select();
-    link.setSelectionRange(0, 99999);
+    input.select();
+    input.setSelectionRange(0, 99999);
 
-    navigator.clipboard.writeText(link.value);
+    navigator.clipboard.writeText(vehicleLink)
+    .then(() => {
 
-    alert("Vehicle Link Copied.");
+        alert("✅ Vehicle Link Copied");
+
+    })
+    .catch(() => {
+
+        alert("Unable to copy link.");
+
+    });
 
 }
+
+/* ==========================================
+   DOWNLOAD QR
+========================================== */
 
 function downloadQR() {
 
-    const image = document.getElementById("qrImage");
+    const link = document.createElement("a");
 
-    const a = document.createElement("a");
+    link.href = vehicleQR;
 
-    a.href = image.src;
+    link.download = vehicleNumber + "-QR.png";
 
-    a.download = "VehicleQR.png";
+    document.body.appendChild(link);
 
-    a.click();
+    link.click();
 
-}
-
-async function downloadSticker() {
-
-    // QR Image
-    document.getElementById("stickerQR").src =
-        document.getElementById("qrImage").src;
-
-    // Sticker ID (Temporary)
-    document.getElementById("stickerNumber").innerHTML =
-        number;
-
-    // Show Template
-    const template =
-        document.getElementById("stickerTemplate");
-
-    template.style.display = "block";
-
-    // Wait for QR Image
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    html2canvas(document.getElementById("sticker"), {
-
-        scale:3,
-
-        useCORS:true,
-
-        backgroundColor:"#ffffff"
-
-    }).then(canvas => {
-
-        const link =
-            document.createElement("a");
-
-        link.download =
-            `${number}-Vehicle-Alert-Sticker.png`;
-
-        link.href =
-            canvas.toDataURL("image/png");
-
-        link.click();
-
-        template.style.display = "none";
-
-    });
+    document.body.removeChild(link);
 
 }
