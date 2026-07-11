@@ -989,3 +989,60 @@ body{
     margin-top:8px;
 
 }
+/* =====================================
+   TRUST SECTION
+===================================== */
+
+.trust-section{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    margin:18px 0 22px;
+
+}
+
+.trust-card{
+
+    background:#f8fafc;
+
+    border:1px solid #dbeafe;
+
+    border-radius:14px;
+
+    padding:14px 8px;
+
+    text-align:center;
+
+    transition:.25s;
+
+}
+
+.trust-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(37,99,235,.12);
+
+}
+
+.trust-card{
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#334155;
+
+}
+
+.trust-card span{
+
+    display:block;
+
+    margin-top:8px;
+
+}
