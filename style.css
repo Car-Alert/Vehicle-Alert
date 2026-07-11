@@ -872,3 +872,72 @@ body{
     overflow-x:hidden;
 
 }
+/* ==========================================
+   VEHICLE ALERT HEADER
+========================================== */
+
+.page-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.logo-circle{
+
+    width:130px;
+
+    height:130px;
+
+    margin:0 auto 18px;
+
+    background:#ffffff;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.20);
+
+}
+
+.siteLogo{
+
+    width:110px;
+
+    height:110px;
+
+    object-fit:contain;
+
+}
+
+.page-header h1{
+
+    color:#ffffff;
+
+    font-size:34px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+    letter-spacing:.5px;
+
+}
+
+.page-header .subtitle{
+
+    color:#dbeafe;
+
+    font-size:16px;
+
+    letter-spacing:1px;
+
+}
