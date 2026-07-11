@@ -57,6 +57,10 @@ readonly>
 💾 Download QR
 </button>
 
+<button class="sticker-btn" onclick="downloadSticker()">
+🖼️ Download Sticker
+</button>
+
 `;
 
 }
