@@ -92,8 +92,48 @@ function downloadQR() {
 
 }
 
-function downloadSticker(){
+async function downloadSticker() {
 
-    alert("Sticker Generator Coming in Step 2");
+    // QR Image
+    document.getElementById("stickerQR").src =
+        document.getElementById("qrImage").src;
+
+    // Sticker ID (Temporary)
+    document.getElementById("stickerNumber").innerHTML =
+        number;
+
+    // Show Template
+    const template =
+        document.getElementById("stickerTemplate");
+
+    template.style.display = "block";
+
+    // Wait for QR Image
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    html2canvas(document.getElementById("sticker"), {
+
+        scale:3,
+
+        useCORS:true,
+
+        backgroundColor:"#ffffff"
+
+    }).then(canvas => {
+
+        const link =
+            document.createElement("a");
+
+        link.download =
+            `${number}-Vehicle-Alert-Sticker.png`;
+
+        link.href =
+            canvas.toDataURL("image/png");
+
+        link.click();
+
+        template.style.display = "none";
+
+    });
 
 }
