@@ -683,27 +683,21 @@ select:focus{
 ========================== */
 
 .logo-box{
-
-    width:72px;
-    height:72px;
-
+    width:90px;
+    height:90px;
     background:#fff;
-
-    border-radius:18px;
-
+    border-radius:20px;
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
+    overflow:hidden;
 }
 
 .stickerLogo{
 
-    width:58px;
+    width:100%;
 
-    height:58px;
+    height:100%;
 
     object-fit:contain;
 
