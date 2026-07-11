@@ -678,3 +678,33 @@ select:focus{
     letter-spacing:1px;
 
 }
+/* ==========================
+   LOGO
+========================== */
+
+.logo-box{
+
+    width:72px;
+    height:72px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.stickerLogo{
+
+    width:58px;
+
+    height:58px;
+
+    object-fit:contain;
+
+}
