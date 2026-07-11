@@ -138,3 +138,76 @@ function downloadQR() {
     document.body.removeChild(link);
 
 }
+/* ==========================================
+   DOWNLOAD PREMIUM STICKER
+========================================== */
+
+async function downloadSticker() {
+
+    // QR ko Sticker me set karo
+    document.getElementById("stickerQR").src = vehicleQR;
+
+    // Hidden Sticker Template
+    const template = document.getElementById("stickerTemplate");
+
+    template.style.display = "block";
+
+    // QR load hone ka wait
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    const canvas = await html2canvas(
+        document.getElementById("sticker"),
+        {
+            scale:3,
+            useCORS:true,
+            backgroundColor:"#ffffff"
+        }
+    );
+
+    const link = document.createElement("a");
+
+    link.download =
+        vehicleNumber + "-Vehicle-Alert-Sticker.png";
+
+    link.href = canvas.toDataURL("image/png");
+
+    link.click();
+
+    template.style.display = "none";
+
+}
+/* ==========================================
+   FINAL UTILITIES
+========================================== */
+
+// Auto Uppercase Vehicle Number
+
+document.getElementById("number").addEventListener("input", function () {
+
+    this.value = this.value.toUpperCase();
+
+});
+
+// Enter Key Support
+
+document.querySelectorAll("input").forEach(input => {
+
+    input.addEventListener("keypress", function (e) {
+
+        if (e.key === "Enter") {
+
+            generateQR();
+
+        }
+
+    });
+
+});
+
+// QR Image Load Check
+
+window.addEventListener("load", () => {
+
+    console.log("✅ Vehicle Alert Admin Panel Loaded");
+
+});
