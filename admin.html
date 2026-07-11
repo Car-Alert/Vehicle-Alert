@@ -36,7 +36,7 @@
         <input
         type="text"
         id="car"
-        placeholder="Enter Car Name">
+        placeholder="Enter Vehicle Name">
 
         <label>🚗 Vehicle Number</label>
 
@@ -45,33 +45,24 @@
         id="number"
         placeholder="Enter Vehicle Number">
 
-<label>📱 Owner Mobile Number</label>
+        <label>📱 Owner Mobile Number</label>
 
-<input
-type="tel"
-id="mobile"
-placeholder="Enter Mobile Number">
+        <input
+        type="tel"
+        id="mobile"
+        placeholder="Enter Mobile Number">
 
-<label>📸 Vehicle Photo URL</label>
+        <label>🚘 Vehicle Type</label>
 
-<input
-type="url"
-id="photo"
-placeholder="Paste Vehicle Photo URL">
+        <select id="vehicleType">
 
-<label for="vehicleType">Vehicle Type</label>
+            <option value="car">🚘 Car / SUV</option>
+            <option value="bike">🏍️ Bike / Scooter</option>
 
-<select id="vehicleType">
+        </select>
 
-    <option value="car">🚘 Car / SUV</option>
-
-    <option value="bike">🏍️ Bike / Scooter</option>
-
-</select>
         <button onclick="generateQR()">
-
             🚀 Generate QR
-
         </button>
 
     </div>
@@ -84,9 +75,9 @@ placeholder="Paste Vehicle Photo URL">
 
 </div>
 
-   <!-- ==========================
-     PREMIUM STICKER TEMPLATE
-========================== -->
+<!-- ===================================
+     PREMIUM STICKER TEMPLATE (Hidden)
+=================================== -->
 
 <div id="stickerTemplate" style="display:none;">
 
@@ -123,7 +114,10 @@ placeholder="Paste Vehicle Photo URL">
 
             <div class="qr-frame">
 
-                <img id="stickerQR" src="" alt="QR">
+                <img
+                id="stickerQR"
+                src=""
+                alt="QR Code">
 
             </div>
 
@@ -137,7 +131,7 @@ placeholder="Paste Vehicle Photo URL">
 
             <div>⚡ Instant Alert</div>
 
-            <div>🛡 Secure</div>
+            <div>🛡️ Secure</div>
 
         </div>
 
@@ -151,31 +145,12 @@ placeholder="Paste Vehicle Photo URL">
 
 </div>
 
-        <div class="right">
+<!-- html2canvas -->
 
-            <img id="stickerQR" src="">
-
-            <h3 id="stickerNumber">
-                VA000001
-            </h3>
-
-            <div class="features">
-
-                <span>🛡 Privacy</span>
-
-                <span>💬 Anonymous</span>
-
-                <span>📩 Message Only</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+<!-- Admin Script -->
+
 <script src="admin.js"></script>
 
 </body>
