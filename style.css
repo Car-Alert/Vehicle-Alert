@@ -384,40 +384,48 @@ h1{
 }
 
 /* =====================================
-   SEND ALERT
+   SEND ALERT BUTTON
 ===================================== */
 
 #sendBtn{
 
     width:100%;
 
-    height:46px;
+    height:58px;
 
-    margin-top:10px;
+    margin-top:18px;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:16px;
 
     background:#94a3b8;
 
     color:#fff;
 
-    font-size:16px;
+    font-size:18px;
 
-    font-weight:700;
-
-    cursor:not-allowed;
+    font-weight:800;
 
     transition:.25s;
+
+    cursor:not-allowed;
 
 }
 
 #sendBtn.active{
 
-    background:linear-gradient(90deg,#ef4444,#dc2626);
+    background:linear-gradient(135deg,#ef4444,#dc2626);
 
     cursor:pointer;
+
+    box-shadow:0 10px 22px rgba(239,68,68,.30);
+
+}
+
+#sendBtn.active:hover{
+
+    transform:translateY(-2px);
 
 }
 /* =====================================
