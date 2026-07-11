@@ -210,4 +210,5 @@ window.addEventListener("load", () => {
 
     console.log("✅ Vehicle Alert Admin Panel Loaded");
 
-});
+}
+);
