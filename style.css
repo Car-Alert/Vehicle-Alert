@@ -328,16 +328,16 @@ h1{
 }
 
 /* =====================================
-   CALL + SMS
+   PREMIUM ACTION BUTTONS
 ===================================== */
 
 .action-row{
 
     display:flex;
 
-    gap:8px;
+    gap:12px;
 
-    margin-top:10px;
+    margin-top:18px;
 
 }
 
@@ -345,39 +345,41 @@ h1{
 
     flex:1;
 
-    height:42px;
+    height:54px;
 
     border:none;
 
-    border-radius:12px;
-
-    font-size:15px;
-
-    font-weight:700;
+    border-radius:14px;
 
     color:#fff;
+
+    font-size:16px;
+
+    font-weight:700;
 
     cursor:pointer;
 
     transition:.25s;
 
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+
 }
 
 .action-row button:hover{
 
-    transform:translateY(-1px);
+    transform:translateY(-2px);
 
 }
 
 #callBtn{
 
-    background:#16a34a;
+    background:linear-gradient(135deg,#16a34a,#22c55e);
 
 }
 
 #smsBtn{
 
-    background:#2563eb;
+    background:linear-gradient(135deg,#2563eb,#3b82f6);
 
 }
 
