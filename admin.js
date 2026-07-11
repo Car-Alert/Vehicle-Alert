@@ -87,3 +87,9 @@ function downloadQR() {
     a.click();
 
 }
+
+function downloadSticker(){
+
+    alert("Sticker Generator Coming in Step 2");
+
+}
