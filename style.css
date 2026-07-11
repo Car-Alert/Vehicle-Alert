@@ -234,32 +234,44 @@ h1{
 
 }
 /* =====================================
-   ISSUE BUTTONS (FINAL)
+   PREMIUM ISSUE BUTTONS
 ===================================== */
 
 .opt{
 
     width:100%;
 
-    height:42px;
+    height:56px;
 
-    margin:6px 0;
+    margin:10px 0;
 
     border:none;
 
-    border-radius:12px;
+    border-radius:16px;
 
-    background:#eef4ff;
+    background:#f8fafc;
+
+    border:1px solid #dbeafe;
 
     color:#1e293b;
 
-    font-size:15px;
+    font-size:17px;
 
-    font-weight:600;
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
 
     cursor:pointer;
 
-    transition:.25s;
+    transition:all .25s ease;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
 
 }
 
@@ -267,17 +279,23 @@ h1{
 
     background:#2563eb;
 
-    color:#fff;
+    color:#ffffff;
 
-    transform:translateY(-1px);
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 20px rgba(37,99,235,.25);
 
 }
 
 .opt.active{
 
-    background:#16a34a;
+    background:linear-gradient(90deg,#16a34a,#22c55e);
 
-    color:#fff;
+    color:#ffffff;
+
+    border:none;
+
+    box-shadow:0 8px 20px rgba(22,163,74,.30);
 
 }
 
