@@ -708,9 +708,9 @@ select:focus{
     object-fit:contain;
 
 }
+
 .logo-img{
-    width:110px;
-    height:110px;
+    width:128px;
+    height:128px;
     object-fit:contain;
-    display:block;
 }
