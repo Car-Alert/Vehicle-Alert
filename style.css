@@ -81,95 +81,118 @@ h1{
     letter-spacing:.3px;
 
 }
-/* =====================================
-   VEHICLE CARD (FINAL PREMIUM)
+
+    /* =====================================
+   PREMIUM VEHICLE CARD
 ===================================== */
 
 .vehicle-card{
 
-    background:linear-gradient(180deg,#ffffff,#f8fafc);
+    background:#ffffff;
 
-    border-radius:20px;
+    border-radius:22px;
 
-    padding:14px;
+    padding:22px;
 
-    margin-bottom:14px;
+    margin-bottom:18px;
 
     text-align:center;
 
-    box-shadow:0 8px 22px rgba(0,0,0,.08);
+    border:1px solid #e5e7eb;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Blue top accent */
+
+.vehicle-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:6px;
+
+    background:linear-gradient(90deg,#2563eb,#38bdf8);
 
 }
 
 .car-icon{
 
-    font-size:34px;
-
-    margin-bottom:4px;
-
-    line-height:1;
-
-}
-
-#carName{
-
-    font-size:20px;
-
-    font-weight:700;
-
-    color:#111827;
-
-    margin-bottom:4px;
-
-}
-
-.owner{
-
-    font-size:16px;
-
-    font-weight:600;
-
-    color:#475569;
+    font-size:48px;
 
     margin-bottom:10px;
 
 }
 
+#carName{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:#111827;
+
+    margin-bottom:6px;
+
+}
+
+.owner{
+
+    font-size:17px;
+
+    color:#64748b;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+}
+
 /* ==========================
-   NUMBER PLATE
+   PREMIUM NUMBER PLATE
 ========================== */
 
 .number-plate{
 
-    width:280px;
+    width:300px;
 
     max-width:100%;
 
-    height:54px;
+    height:60px;
 
-    margin:10px auto 0;
+    margin:auto;
 
     display:flex;
 
     overflow:hidden;
 
-    border:3px solid #111;
+    border:4px solid #111827;
 
-    border-radius:12px;
+    border-radius:16px;
 
-    background:#fff;
+    background:#ffffff;
 
-    box-shadow:0 5px 12px rgba(0,0,0,.15);
+    box-shadow:0 8px 18px rgba(0,0,0,.12);
 
 }
 
 .plate-left{
 
-    width:52px;
+    width:60px;
 
-    background:#003399;
+    background:#0b4dbb;
 
-    color:#fff;
+    color:#ffffff;
 
     display:flex;
 
@@ -177,11 +200,11 @@ h1{
 
     align-items:center;
 
-    font-size:17px;
+    font-weight:700;
 
-    font-weight:bold;
+    font-size:20px;
 
-    border-right:2px solid #111;
+    border-right:3px solid #111827;
 
 }
 
@@ -199,17 +222,15 @@ h1{
 
 #plateNumber{
 
-    font-family:"Arial Black",Arial,sans-serif;
-
-    font-size:22px;
+    font-size:30px;
 
     font-weight:900;
 
-    letter-spacing:1px;
+    font-family:"Arial Black",sans-serif;
 
-    color:#111;
+    letter-spacing:2px;
 
-    text-transform:uppercase;
+    color:#111827;
 
 }
 /* =====================================
