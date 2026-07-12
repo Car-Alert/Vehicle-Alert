@@ -1084,7 +1084,7 @@ body{
 
     gap:10px;
 
-    margin:18px 0 22px;
+    margin:16px 0 20px;
 
 }
 
@@ -1096,11 +1096,17 @@ body{
 
     border-radius:14px;
 
-    padding:14px 8px;
+    padding:10px 6px;
 
     text-align:center;
 
-    transition:.25s;
+    transition:.25s
+min-height:78px;       
+/* fixed compact height */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 
 }
 
@@ -1112,20 +1118,17 @@ body{
 
 }
 
-.trust-card{
 
-    font-size:13px;
-
-    font-weight:700;
-
-    color:#334155;
-
+.trust-card i{
+    font-size:22px;        /* icon thoda chhota */
+    margin-bottom:6px;
 }
 
 .trust-card span{
-
     display:block;
-
-    margin-top:8px;
-
+    margin-top:2px;
+    font-size:13px;
+    font-weight:600;
+    line-height:1.2;
+    color:#334155;
 }
