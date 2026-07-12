@@ -989,62 +989,36 @@ body{
     margin-top:8px;
 
 }
-/* =====================================
-   TRUST SECTION
-===================================== */
 
-.trust-section{
+/* ===== Trust Badges ===== */
 
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
+.trust-badges{
+    display:flex;
+    justify-content:space-between;
     gap:10px;
-
-    margin:18px 0 22px;
-
+    margin:18px 0;
 }
 
 .trust-card{
-
-    background:#f8fafc;
-
+    flex:1;
+    background:#f8fbff;
     border:1px solid #dbeafe;
-
-    border-radius:14px;
-
-    padding:14px 8px;
-
+    border-radius:16px;
+    padding:12px 8px;
     text-align:center;
-
-    transition:.25s;
-
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
 }
 
-.trust-card:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:0 8px 20px rgba(37,99,235,.12);
-
+.trust-card .icon{
+    font-size:22px;
+    margin-bottom:6px;
 }
 
-.trust-card{
-
+.trust-card h4{
     font-size:13px;
-
-    font-weight:700;
-
+    font-weight:600;
     color:#334155;
-
-}
-
-.trust-card span{
-
-    display:block;
-
-    margin-top:8px;
-
+    line-height:1.25;
 }
 /* ==========================================
    PROFESSIONAL FOOTER
