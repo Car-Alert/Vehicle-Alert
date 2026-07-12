@@ -1077,47 +1077,30 @@ body{
 ===================================== */
 
 .trust-section{
-
     display:grid;
-
     grid-template-columns:repeat(3,1fr);
-
     gap:10px;
-
     margin:16px 0 20px;
-
 }
 
 .trust-card{
-
     background:#f8fafc;
-
     border:1px solid #dbeafe;
-
     border-radius:14px;
-
-    padding:10px 6px;
-
+    padding:10px 6px;      /* pehle 14px 8px tha */
     text-align:center;
-
-    transition:.25s
-min-height:78px;       
-/* fixed compact height */
+    transition:.25s;
+    min-height:78px;       /* fixed compact height */
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-
 }
 
 .trust-card:hover{
-
     transform:translateY(-2px);
-
     box-shadow:0 8px 20px rgba(37,99,235,.12);
-
 }
-
 
 .trust-card i{
     font-size:22px;        /* icon thoda chhota */
