@@ -1046,3 +1046,84 @@ body{
     margin-top:8px;
 
 }
+/* ==========================================
+   PROFESSIONAL FOOTER
+========================================== */
+
+.footer{
+
+    margin-top:28px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    border-top:1px solid #e5e7eb;
+
+}
+
+.footer-logo{
+
+    width:70px;
+
+    height:70px;
+
+    margin:0 auto 14px;
+
+    background:#ffffff;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.10);
+
+    overflow:hidden;
+
+}
+
+.footer-logo img{
+
+    width:58px;
+
+    height:58px;
+
+    object-fit:contain;
+
+}
+
+.footer h3{
+
+    font-size:22px;
+
+    color:#111827;
+
+    margin-bottom:8px;
+
+    font-weight:800;
+
+}
+
+.footer-tagline{
+
+    color:#64748b;
+
+    font-size:15px;
+
+    margin-bottom:8px;
+
+}
+
+.footer-version{
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+    letter-spacing:.5px;
+
+}
