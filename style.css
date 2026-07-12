@@ -1073,44 +1073,34 @@ body{
 
 }
 /* =====================================
-   TRUST BADGES - FINAL VERSION
+   TRUST SECTION
 ===================================== */
 
-.trust-badges{
+.trust-section{
 
-    display:flex;
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
     gap:10px;
-    margin:18px 0 20px;
+
+    margin:18px 0 22px;
 
 }
 
 .trust-card{
 
-    flex:1;
-
-    background:#ffffff;
+    background:#f8fafc;
 
     border:1px solid #dbeafe;
 
-    border-radius:16px;
+    border-radius:14px;
 
-    height:88px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:center;
+    padding:14px 8px;
 
     text-align:center;
 
-    padding:8px 6px;
-
-    box-shadow:0 4px 12px rgba(15,23,42,.06);
-
-    transition:.25s ease;
+    transition:.25s;
 
 }
 
@@ -1118,64 +1108,24 @@ body{
 
     transform:translateY(-2px);
 
-    box-shadow:0 8px 18px rgba(37,99,235,.12);
+    box-shadow:0 8px 20px rgba(37,99,235,.12);
 
 }
 
-.trust-card .icon{
+.trust-card{
 
-    font-size:18px;
+    font-size:13px;
 
-    margin-bottom:6px;
+    font-weight:700;
 
-    line-height:1;
+    color:#334155;
 
 }
 
 .trust-card span{
 
-    font-size:13px;
+    display:block;
 
-    font-weight:600;
-
-    color:#334155;
-
-    line-height:1.25;
-
-}
-
-/* Mobile */
-
-@media (max-width:480px){
-
-    .trust-badges{
-
-        gap:8px;
-
-    }
-
-    .trust-card{
-
-        height:82px;
-
-        border-radius:14px;
-
-        padding:6px;
-
-    }
-
-    .trust-card .icon{
-
-        font-size:20px;
-
-        margin-bottom:5px;
-
-    }
-
-    .trust-card span{
-
-        font-size:12px;
-
-    }
+    margin-top:8px;
 
 }
