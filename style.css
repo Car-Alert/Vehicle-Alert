@@ -1087,8 +1087,8 @@ body{
     background:#f8fafc;
     border:1px solid #dbeafe;
     border-radius:12px;
-    padding:10px 6px;
-    min-height:78px;
+    padding:8px 6px;
+    min-height:70px;
 
     display:flex;
     flex-direction:column;
@@ -1104,14 +1104,14 @@ body{
 }
 
 .trust-card i{
-    font-size:22px;
+    font-size:20px;
     color:#2563eb;
     margin-bottom:6px;
 }
 
 .trust-card span{
-    font-size:12px;
-    font-weight:600;
+    font-size:11px;
+    font-weight:500;
     line-height:1.2;
-    color:#475569;
+    color:#64748b;
 }
