@@ -183,34 +183,47 @@ window.addEventListener("load", () => {
 
 async function downloadSticker() {
 
-    // QR Sticker me set karo
-    document.getElementById("vaStickerQR").src = vehicleQR;
+    const canvas = document.createElement("canvas");
+    canvas.width = 1536;
+    canvas.height = 1536;
 
-    // Hidden template
-    const template = document.getElementById("vaStickerTemplate");
+    const ctx = canvas.getContext("2d");
 
-    template.style.left = "0";
+    // Template Load
+    const template = new Image();
+    template.crossOrigin = "anonymous";
+    template.src = STICKER_TEMPLATE;
 
-    // QR load hone ka wait
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => {
+        template.onload = resolve;
+    });
 
-    const canvas = await html2canvas(
-        document.getElementById("vaSticker"),
-        {
-            scale:4,
-            useCORS:true,
-            backgroundColor:"#ffffff"
-        }
+    ctx.drawImage(template,0,0,1536,1536);
+
+    // QR Load
+    const qr = new Image();
+    qr.crossOrigin = "anonymous";
+    qr.src = vehicleQR;
+
+    await new Promise(resolve=>{
+        qr.onload = resolve;
+    });
+
+    // QR Position
+    ctx.drawImage(
+        qr,
+        875,      // X
+        465,      // Y
+        500,      // Width
+        500       // Height
     );
 
-    // Template dobara hide
-    template.style.left = "-9999px";
+    const link=document.createElement("a");
 
-    const link = document.createElement("a");
+    link.download =
+    vehicleNumber + "-Vehicle-Alert-Sticker.png";
 
-    link.download = vehicleNumber + "-Vehicle-Alert-Sticker.png";
-
-    link.href = canvas.toDataURL("image/png");
+    link.href=canvas.toDataURL("image/png");
 
     link.click();
 
