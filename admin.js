@@ -138,44 +138,7 @@ function downloadQR() {
     document.body.removeChild(link);
 
 }
-/* ==========================================
-   DOWNLOAD PREMIUM STICKER
-========================================== */
 
-async function downloadSticker() {
-
-    // QR ko Sticker me set karo
-    document.getElementById("stickerQR").src = vehicleQR;
-
-    // Hidden Sticker Template
-    const template = document.getElementById("stickerTemplate");
-
-    template.style.display = "block";
-
-    // QR load hone ka wait
-    await new Promise(resolve => setTimeout(resolve, 500));
-
-    const canvas = await html2canvas(
-        document.getElementById("sticker"),
-        {
-            scale:3,
-            useCORS:true,
-            backgroundColor:"#ffffff"
-        }
-    );
-
-    const link = document.createElement("a");
-
-    link.download =
-        vehicleNumber + "-Vehicle-Alert-Sticker.png";
-
-    link.href = canvas.toDataURL("image/png");
-
-    link.click();
-
-    template.style.display = "none";
-
-}
 /* ==========================================
    FINAL UTILITIES
 ========================================== */
@@ -212,3 +175,42 @@ window.addEventListener("load", () => {
 
 }
 );
+
+/* ==========================================
+   DOWNLOAD STICKER V3
+========================================== */
+
+async function downloadSticker() {
+
+    // QR Sticker me set karo
+    document.getElementById("vaStickerQR").src = vehicleQR;
+
+    // Hidden template
+    const template = document.getElementById("vaStickerTemplate");
+
+    template.style.left = "0";
+
+    // QR load hone ka wait
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    const canvas = await html2canvas(
+        document.getElementById("vaSticker"),
+        {
+            scale:4,
+            useCORS:true,
+            backgroundColor:"#ffffff"
+        }
+    );
+
+    // Template dobara hide
+    template.style.left = "-9999px";
+
+    const link = document.createElement("a");
+
+    link.download = vehicleNumber + "-Vehicle-Alert-Sticker.png";
+
+    link.href = canvas.toDataURL("image/png");
+
+    link.click();
+
+}
