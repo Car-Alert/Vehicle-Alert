@@ -7,6 +7,8 @@ let vehicleNumber = "";
 let vehicleQR = "";
 let vehicleLink = "";
 
+const STICKER_TEMPLATE = "images/sticker-template.png";
+
 /* ==========================================
    GENERATE QR
 ========================================== */
