@@ -212,10 +212,10 @@ async function downloadSticker() {
     // QR Position
     ctx.drawImage(
         qr,
-        875,      // X
-        465,      // Y
-        500,      // Width
-        500       // Height
+        860,      // X
+        430,      // Y
+        540,      // Width
+        540       // Height
     );
 
     const link=document.createElement("a");
