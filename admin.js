@@ -217,17 +217,7 @@ async function downloadSticker() {
         540,      // Width
         540       // Height
     );
-
-    const link=document.createElement("a");
-
-    link.download =
-    vehicleNumber + "-Vehicle-Alert-Sticker.png";
-
-    link.href=canvas.toDataURL("image/png");
-
-    link.click();
-
-}
+// Logo Load
 const logo = new Image();
 logo.crossOrigin = "anonymous";
 logo.src = "images/logo.png";
@@ -236,18 +226,23 @@ await new Promise(resolve => {
     logo.onload = resolve;
 });
 
-const logoSize = 90;   // Adjust later if needed
+const logoSize = 110;
 
-const logoX = 865 + (500 - logoSize) / 2;
-const logoY = 505 + (500 - logoSize) / 2;
+// QR position (same as drawImage)
+const qrX = 800;
+const qrY = 610;
+const qrSize = 540;
 
-// White background circle
+const logoX = qrX + (qrSize - logoSize) / 2;
+const logoY = qrY + (qrSize - logoSize) / 2;
+
+// White circle
 ctx.fillStyle = "#ffffff";
 ctx.beginPath();
 ctx.arc(
     logoX + logoSize / 2,
     logoY + logoSize / 2,
-    logoSize / 2 + 8,
+    logoSize / 2 + 10,
     0,
     Math.PI * 2
 );
@@ -261,3 +256,14 @@ ctx.drawImage(
     logoSize,
     logoSize
 );
+
+    const link=document.createElement("a");
+
+    link.download =
+    vehicleNumber + "-Vehicle-Alert-Sticker.png";
+
+    link.href=canvas.toDataURL("image/png");
+
+    link.click();
+
+}
