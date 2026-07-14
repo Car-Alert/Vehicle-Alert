@@ -212,8 +212,8 @@ async function downloadSticker() {
     // QR Position
     ctx.drawImage(
         qr,
-        700,      // X
-        600,      // Y
+        800,      // X
+        610,      // Y
         540,      // Width
         540       // Height
     );
