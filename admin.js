@@ -228,3 +228,36 @@ async function downloadSticker() {
     link.click();
 
 }
+const logo = new Image();
+logo.crossOrigin = "anonymous";
+logo.src = "images/logo.png";
+
+await new Promise(resolve => {
+    logo.onload = resolve;
+});
+
+const logoSize = 90;   // Adjust later if needed
+
+const logoX = 865 + (500 - logoSize) / 2;
+const logoY = 505 + (500 - logoSize) / 2;
+
+// White background circle
+ctx.fillStyle = "#ffffff";
+ctx.beginPath();
+ctx.arc(
+    logoX + logoSize / 2,
+    logoY + logoSize / 2,
+    logoSize / 2 + 8,
+    0,
+    Math.PI * 2
+);
+ctx.fill();
+
+// Logo
+ctx.drawImage(
+    logo,
+    logoX,
+    logoY,
+    logoSize,
+    logoSize
+);
