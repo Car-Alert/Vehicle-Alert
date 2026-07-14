@@ -184,8 +184,8 @@ window.addEventListener("load", () => {
 async function downloadSticker() {
 
     const canvas = document.createElement("canvas");
-    canvas.width = 1536;
-    canvas.height = 1536;
+    canvas.width = 2048;
+    canvas.height = 2048;
 
     const ctx = canvas.getContext("2d");
 
@@ -198,7 +198,7 @@ async function downloadSticker() {
         template.onload = resolve;
     });
 
-    ctx.drawImage(template,0,0,1536,1536);
+    ctx.drawImage(template,0,0,2048,2048);
 
     // QR Load
     const qr = new Image();
@@ -213,9 +213,9 @@ async function downloadSticker() {
     ctx.drawImage(
         qr,
         800,      // X
-        610,      // Y
-        540,      // Width
-        540       // Height
+        640,      // Y
+        510,      // Width
+        510       // Height
     );
 // Logo Load
 const logo = new Image();
@@ -226,12 +226,12 @@ await new Promise(resolve => {
     logo.onload = resolve;
 });
 
-const logoSize = 110;
+const logoSize = 95;
 
 // QR position (same as drawImage)
 const qrX = 800;
-const qrY = 610;
-const qrSize = 540;
+const qrY = 640;
+const qrSize = 510;
 
 const logoX = qrX + (qrSize - logoSize) / 2;
 const logoY = qrY + (qrSize - logoSize) / 2;
@@ -247,6 +247,9 @@ ctx.arc(
     Math.PI * 2
 );
 ctx.fill();
+ctx.strokeStyle = "#1d4ed8";
+ctx.lineWidth = 4;
+ctx.stroke();
 
 // Logo
 ctx.drawImage(
