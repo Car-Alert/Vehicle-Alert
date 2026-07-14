@@ -184,8 +184,8 @@ window.addEventListener("load", () => {
 async function downloadSticker() {
 
     const canvas = document.createElement("canvas");
-    canvas.width = 2048;
-    canvas.height = 2048;
+    canvas.width = 1536;
+    canvas.height = 1536;
 
     const ctx = canvas.getContext("2d");
 
@@ -198,7 +198,7 @@ async function downloadSticker() {
         template.onload = resolve;
     });
 
-    ctx.drawImage(template,0,0,2048,2048);
+    ctx.drawImage(template,0,0,1536,1536);
 
     // QR Load
     const qr = new Image();
