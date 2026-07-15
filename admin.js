@@ -213,7 +213,7 @@ async function downloadSticker() {
     ctx.drawImage(
         qr,
         800,      // X
-        600,      // Y
+        620,      // Y
         560,      // Width
         560       // Height
     );
@@ -230,7 +230,7 @@ const logoSize = 105;
 
 // QR position (same as drawImage)
 const qrX = 800;
-const qrY = 600;
+const qrY = 620;
 const qrSize = 560;
 
 const logoX = qrX + (qrSize - logoSize) / 2;
