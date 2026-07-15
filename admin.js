@@ -226,7 +226,7 @@ await new Promise(resolve => {
     logo.onload = resolve;
 });
 
-const logoSize = 95;
+const logoSize = 105;
 
 // QR position (same as drawImage)
 const qrX = 800;
