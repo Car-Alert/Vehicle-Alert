@@ -103,37 +103,47 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     </div>
 </div>
 
-    <!-- Issue Buttons -->
+ <!-- Issue Buttons -->
 
-    <button class="opt"
+<div class="issue-grid">
+
+    <button class="opt danger"
     onclick="selectIssue(this,'No Parking Zone')">
-         No Parking Zone
+        <i class="fa-solid fa-ban"></i>
+        <span>No Parking Zone</span>
     </button>
 
-    <button class="opt"
+    <button class="opt primary"
     onclick="selectIssue(this,'Please Move Vehicle')">
-        Please Move Vehicle
+        <i class="fa-solid fa-car-side"></i>
+        <span>Please Move Vehicle</span>
     </button>
 
-    <button class="opt"
+    <button class="opt warning"
     onclick="selectIssue(this,'Headlights On')">
-         Headlights On
+        <i class="fa-solid fa-lightbulb"></i>
+        <span>Headlights On</span>
     </button>
 
-    <button class="opt"
+    <button class="opt orange"
     onclick="selectIssue(this,'Vehicle Damaged')">
-         Vehicle Damaged
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Vehicle Damaged</span>
     </button>
 
-    <button class="opt"
+    <button class="opt purple"
     onclick="selectIssue(this,'Security Issue')">
-         Security Issue
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Security Issue</span>
     </button>
 
-    <button class="opt"
+    <button class="opt gray"
     onclick="selectIssue(this,'Other Issue')">
-         Other Issue
+        <i class="fa-solid fa-pen"></i>
+        <span>Other Issue</span>
     </button>
+
+</div>
 
 <textarea
 id="otherIssue"
@@ -142,9 +152,9 @@ style="
 display:none;
 width:100%;
 height:90px;
-margin-top:10px;
-padding:12px;
-border-radius:12px;
+margin-top:14px;
+padding:14px;
+border-radius:14px;
 border:2px solid #dbeafe;
 font-size:15px;
 resize:none;
