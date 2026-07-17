@@ -299,8 +299,19 @@ text-align:left;
     border:none;
 
     box-shadow:0 8px 20px rgba(22,163,74,.30);
+}
+
+.opt i{
+
+    width:24px;
+
+    font-size:20px;
+
+    text-align:center;
 
 }
+
+
 
 /* =====================================
    OTHER ISSUE
