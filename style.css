@@ -1115,3 +1115,15 @@ body{
     line-height:1.2;
     color:#64748b;
 }
+
+.issue-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+
+    margin:16px 0;
+
+}
