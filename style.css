@@ -1192,3 +1192,39 @@ body{
     border-left:5px solid #64748b;
 
 }
+
+/* =====================================
+   VEHICLE ALERT ICONS
+===================================== */
+
+.issue-icon{
+
+    width:28px;
+
+    height:28px;
+
+    object-fit:contain;
+
+    flex-shrink:0;
+
+    transition:.25s ease;
+
+}
+
+.opt span{
+
+    flex:1;
+
+}
+
+.opt:hover .issue-icon{
+
+    transform:scale(1.08);
+
+}
+
+.opt.active .issue-icon{
+
+    filter:brightness(0) invert(1);
+
+}
