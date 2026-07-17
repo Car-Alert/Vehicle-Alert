@@ -165,24 +165,29 @@ outline:none;">
 
 <div class="action-row">
 
-    <button id="callBtn" onclick="callOwner()">
-        📞 Call Owner
+    <button id="callBtn" class="call-btn" onclick="callOwner()">
+        <i class="fa-solid fa-phone"></i>
+        <span>Call Owner</span>
     </button>
 
-    <button id="smsBtn" onclick="sendSMS()">
-        💬 Send SMS
+    <button id="smsBtn" class="sms-btn" onclick="sendSMS()">
+        <i class="fa-solid fa-comment-sms"></i>
+        <span>Send SMS</span>
     </button>
 
 </div>
 
-    <button
-    id="sendBtn"
-    onclick="sendAlert()"
-    disabled>
+<button
+id="sendBtn"
+class="send-btn"
+onclick="sendAlert()"
+disabled>
 
-        🚨 Send Alert
+<i class="fa-solid fa-paper-plane"></i>
 
-    </button>
+<span>Send Alert</span>
+
+</button>
 
 <footer class="footer">
 
