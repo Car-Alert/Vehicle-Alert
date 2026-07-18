@@ -1207,21 +1207,21 @@ body{
 }
 
 .opt.primary{
-    border-left:4px solid #2563eb;
+    border-left:3px solid #2563eb;
 }
 
 .opt.warning{
-    border-left:4px solid #f59e0b;
+    border-left:3px solid #f59e0b;
 }
 
 .opt.orange{
-    border-left:4px solid #f97316;
+    border-left:3px solid #f97316;
 }
 
 .opt.purple{
-    border-left:4px solid #8b5cf6;
+    border-left:3px solid #8b5cf6;
 }
 
 .opt.gray{
-    border-left:4px solid #64748b;
+    border-left:3px solid #64748b;
 }
