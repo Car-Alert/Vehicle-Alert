@@ -255,9 +255,9 @@ h1{
 
     align-items:center;
 
-    justify-content:flex-start;
+    justify-content:center;
 
-    gap:14px;
+    gap:12px;
 
     cursor:pointer;
 
@@ -271,7 +271,7 @@ h1{
 
     font-weight:700;
 
-    text-align:left;
+    text-align:center;
 
 }
 
@@ -295,8 +295,8 @@ h1{
 
 .opt span{
 
-    flex:1;
-
+    flex:none;
+    text-align:center;
     line-height:1.3;
 
 }
