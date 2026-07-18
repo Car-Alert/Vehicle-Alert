@@ -1,44 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg"
-     width="64"
-     height="64"
-     viewBox="0 0 64 64">
+
+<svg
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 64 64">
 
 <defs>
 
-<linearGradient id="g1"
+<linearGradient id="redGrad"
 x1="0%"
 y1="0%"
 x2="100%"
 y2="100%">
 
-<stop offset="0%" stop-color="#ff5f6d"/>
+<stop offset="0%" stop-color="#ff6b6b"/>
 
 <stop offset="100%" stop-color="#ef4444"/>
 
 </linearGradient>
+
+<filter id="shadow"
+x="-50%"
+y="-50%"
+width="200%"
+height="200%">
+
+<feDropShadow
+dx="0"
+dy="2"
+stdDeviation="2"
+flood-color="#000000"
+flood-opacity=".18"/>
+
+</filter>
 
 </defs>
 
 <circle
 cx="32"
 cy="32"
-r="28"
-fill="url(#g1)"/>
+r="27"
+fill="url(#redGrad)"
+filter="url(#shadow)"/>
 
 <circle
 cx="32"
 cy="32"
-r="22"
-fill="white"/>
+r="20"
+fill="#ffffff"/>
 
 <text
 x="32"
-y="39"
+y="40"
 text-anchor="middle"
-font-size="24"
 font-family="Arial"
-font-weight="bold"
+font-size="24"
+font-weight="700"
 fill="#ef4444">
 
 P
