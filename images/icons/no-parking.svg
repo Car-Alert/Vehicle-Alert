@@ -1,81 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <svg xmlns="http://www.w3.org/2000/svg"
-viewBox="0 0 64 64">
+viewBox="0 0 24 24"
+fill="none"
+stroke="#ef4444"
+stroke-width="2.3"
+stroke-linecap="round"
+stroke-linejoin="round">
 
-<defs>
+<circle cx="12" cy="12" r="9"/>
 
-<linearGradient id="grad"
-x1="0%"
-y1="0%"
-x2="100%"
-y2="100%">
+<path d="M8 16V8h4a3 3 0 0 1 0 6H8"/>
 
-<stop offset="0%" stop-color="#ff6b6b"/>
-<stop offset="100%" stop-color="#dc2626"/>
-
-</linearGradient>
-
-<filter id="shadow">
-
-<feDropShadow
-dx="0"
-dy="2"
-stdDeviation="2"
-flood-opacity=".25"/>
-
-</filter>
-
-</defs>
-
-<!-- Background -->
-
-<circle
-cx="32"
-cy="32"
-r="28"
-fill="url(#grad)"
-filter="url(#shadow)"/>
-
-<!-- White Circle -->
-
-<circle
-cx="32"
-cy="32"
-r="20"
-fill="#ffffff"/>
-
-<!-- Letter P -->
-
-<text
-x="32"
-y="39"
-font-family="Segoe UI,Arial"
-font-size="22"
-font-weight="700"
-text-anchor="middle"
-fill="#dc2626">
-
-P
-
-</text>
-
-<!-- Slash -->
-
-<line
-
-x1="17"
-
-y1="47"
-
-x2="47"
-
-y2="17"
-
-stroke="#dc2626"
-
-stroke-width="5"
-
-stroke-linecap="round"/>
+<path d="M6 18L18 6"/>
 
 </svg>
