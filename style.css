@@ -1207,11 +1207,11 @@ body{
 }
 
 .opt.primary{
-    border-left:3px solid #2563eb;
+    border-left:4px solid #2563eb;
 }
 
 .opt.warning{
-    border-left:5px solid #f59e0b;
+    border-left:4px solid #f59e0b;
 }
 
 .opt.orange{
