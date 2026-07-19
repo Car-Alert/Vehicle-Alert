@@ -288,15 +288,19 @@ h1{
 
 .opt.active{
 
-    background:linear-gradient(135deg,#eff6ff,#dbeafe)
-    border:2px solid #3b82f6;
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:#fff;
+
+    border-color:#2563eb;
+
     box-shadow:
-        0 8px 20px rgba(59,130,246,.18);
+    0 0 0 2px rgba(37,99,235,.20),
+    0 12px 28px rgba(37,99,235,.35);
 
-
-    transform:translateY(-2px);
-
+    transform:translateY(-2px) scale(1.02);
 }
+
 .opt span{
 
     flex:none;
