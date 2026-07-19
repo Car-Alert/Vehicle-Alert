@@ -1267,3 +1267,61 @@ body{
     opacity:1;
 
 }
+
+/* ===== PREMIUM LOADER ===== */
+
+#loadingOverlay{
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.78);
+    backdrop-filter:blur(10px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+#loadingOverlay.show{
+    display:flex;
+}
+
+.loader-box{
+    width:290px;
+    background:#fff;
+    border-radius:22px;
+    padding:30px;
+    text-align:center;
+    animation:popup .3s ease;
+}
+
+.loader-logo{
+    width:80px;
+    height:80px;
+    margin:auto auto 18px;
+}
+
+.loader-spinner{
+    width:48px;
+    height:48px;
+    margin:0 auto 18px;
+    border:4px solid #dbeafe;
+    border-top:4px solid #2563eb;
+    border-radius:50%;
+    animation:spin .8s linear infinite;
+}
+
+.loader-box h2{
+    font-size:24px;
+    color:#111827;
+    margin-bottom:8px;
+}
+
+.loader-box p{
+    color:#64748b;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
