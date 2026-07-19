@@ -129,6 +129,24 @@ function sendAlert() {
 
     document.getElementById("confirmPopup").classList.add("show");
 
+
+    // Confirm popup band
+    document.getElementById("confirmPopup").classList.remove("show");
+
+    // Loader dikhao
+    document.getElementById("loadingOverlay").classList.add("show");
+
+    // 2 second loading
+    setTimeout(() => {
+
+        // Loader hatao
+        document.getElementById("loadingOverlay").classList.remove("show");
+
+        // Success popup dikhao
+        document.getElementById("success").classList.add("show");
+
+    }, 2000);
+
 }
 
 /* ------------------------------
