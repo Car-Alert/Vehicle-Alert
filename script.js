@@ -127,25 +127,17 @@ function sendAlert() {
         return;
     }
 
+    if (selectedIssue === "Other Issue") {
+
+        const txt = document.getElementById("otherIssue").value.trim();
+
+        if (txt === "") {
+            alert("Please describe the issue.");
+            return;
+        }
+    }
+
     document.getElementById("confirmPopup").classList.add("show");
-
-
-    // Confirm popup band
-    document.getElementById("confirmPopup").classList.remove("show");
-
-    // Loader dikhao
-    document.getElementById("loadingOverlay").classList.add("show");
-
-    // 2 second loading
-    setTimeout(() => {
-
-        // Loader hatao
-        document.getElementById("loadingOverlay").classList.remove("show");
-
-        // Success popup dikhao
-        document.getElementById("success").classList.add("show");
-
-    }, 2000);
 
 }
 
@@ -167,16 +159,22 @@ function confirmSend() {
 
     document.getElementById("confirmPopup").classList.remove("show");
 
+    document.getElementById("loadingOverlay").classList.add("show");
+
     const sendBtn = document.getElementById("sendBtn");
 
     sendBtn.disabled = true;
     sendBtn.classList.remove("active");
-    sendBtn.innerHTML = "📍 Getting Location...";
 
-    sendTelegram();
+    setTimeout(() => {
+
+        document.getElementById("loadingOverlay").classList.remove("show");
+
+        sendTelegram();
+
+    }, 2000);
 
 }
-
 /* ------------------------------
    Telegram
 ------------------------------ */
