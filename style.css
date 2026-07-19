@@ -286,11 +286,13 @@ h1{
 
 }
 
+
 .opt.active{
 
     background:linear-gradient(135deg,#2563eb,#1d4ed8);
 
-    text-colour:#ffff;
+    color:#fff;
+
     border-color:#2563eb;
 
     box-shadow:
@@ -299,7 +301,6 @@ h1{
 
     transform:translateY(-2px) scale(1.02);
 }
-
 .opt span{
 
     flex:none;
