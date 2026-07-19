@@ -1203,11 +1203,7 @@ body{
 
 }
 
-.opt.active .issue-icon{
 
-    filter:brightness(0) invert(1);
-
-}
 
 .opt.danger{
     border-left:3px solid #ef4444;
