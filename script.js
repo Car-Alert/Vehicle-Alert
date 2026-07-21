@@ -375,19 +375,17 @@ function showSuccess() {
 
 function sendSMS() {
 
-    let issueText = selectedIssue;
+    pendingAction = "sms";
 
-    if (selectedIssue === "Other Issue") {
+    document.querySelector("#confirmPopup h2").innerHTML =
+        "💬 Confirm SMS";
 
-        const txt = document.getElementById("otherIssue").value.trim();
+    document.querySelector("#confirmPopup p").innerHTML =
+        "Are you sure you want to send an SMS to the vehicle owner?";
 
-        if (txt === "") {
-            alert("Please enter your issue.");
-            return;
-        }
+    document.getElementById("confirmPopup").classList.add("show");
 
-        issueText = txt;
-    }
+}
 
     function openSMS(lat, lon) {
 
