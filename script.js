@@ -4,6 +4,7 @@
 ========================================== */
 
 let selectedIssue = "";
+let pendingAction = "";
 
 /* ------------------------------
    Load Vehicle Details
