@@ -458,16 +458,16 @@ Sent via Vehicle Alert`;
     }
 
 }
-function callOwner(){
+function callOwner() {
 
-    if(!mobile){
+    pendingAction = "call";
 
-        alert("Owner mobile number not available.");
+    document.querySelector("#confirmPopup h2").innerHTML =
+        "📞 Confirm Call";
 
-        return;
+    document.querySelector("#confirmPopup p").innerHTML =
+        "Are you sure you want to call the vehicle owner?";
 
-    }
-
-    window.location.href = `tel:${mobile}`;
+    document.getElementById("confirmPopup").classList.add("show");
 
 }
