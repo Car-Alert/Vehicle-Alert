@@ -1,68 +1,87 @@
 /* ==========================================
-   VEHICLE ALERT SYSTEM
-   FINAL PREMIUM SCRIPT.JS
+   VEHICLE ALERT v4.0
+   PREMIUM SCRIPT
+   PART 1 / 4
+========================================== */
+
+"use strict";
+
+/* ==========================================
+   GLOBAL VARIABLES
 ========================================== */
 
 let selectedIssue = "";
 let pendingAction = "";
 
-/* ------------------------------
-   Load Vehicle Details
------------------------------- */
+/* ==========================================
+   URL PARAMETERS
+========================================== */
 
 const params = new URLSearchParams(window.location.search);
 
-const owner = params.get("owner") || "Unknown Owner";
-const car = params.get("car") || "Unknown Vehicle";
+const owner  = params.get("owner")  || "Unknown Owner";
+const car    = params.get("car")    || "Unknown Vehicle";
 const number = params.get("number") || "Unknown";
 const mobile = params.get("mobile") || "";
-const type = params.get("type") || "car";
+const type   = params.get("type")   || "car";
 
-/* ------------------------------
-   Page Load
------------------------------- */
+/* ==========================================
+   DOM ELEMENTS
+========================================== */
 
-window.onload = () => {
+const ownerEl      = document.getElementById("ownerName");
+const carEl        = document.getElementById("carName");
+const plateEl      = document.getElementById("plateNumber");
+const iconEl       = document.getElementById("vehicleIcon");
 
-    // Vehicle Details
-    const ownerEl = document.getElementById("ownerName");
-    const carEl = document.getElementById("carName");
-    const plateEl = document.getElementById("plateNumber");
+const otherIssue   = document.getElementById("otherIssue");
+const charCount    = document.getElementById("charCount");
+
+const sendBtn      = document.getElementById("sendBtn");
+
+const confirmPopup = document.getElementById("confirmPopup");
+const loading      = document.getElementById("loadingOverlay");
+const success      = document.getElementById("success");
+
+/* ==========================================
+   PAGE LOAD
+========================================== */
+
+window.onload = function () {
 
     if (ownerEl) ownerEl.textContent = owner;
     if (carEl) carEl.textContent = car;
     if (plateEl) plateEl.textContent = number;
 
-    // Vehicle Icon
-    const icon = document.getElementById("vehicleIcon");
+    if (iconEl) {
 
-    if (icon) {
-
-        switch (type) {
+        switch (type.toLowerCase()) {
 
             case "bike":
-                icon.innerHTML = "🏍️";
+                iconEl.innerHTML = "🏍️";
+                break;
+
+            case "truck":
+                iconEl.innerHTML = "🚚";
+                break;
+
+            case "bus":
+                iconEl.innerHTML = "🚌";
                 break;
 
             default:
-                icon.innerHTML = "🚘";
+                iconEl.innerHTML = "🚘";
 
         }
 
     }
 
-    // Character Counter
-    const otherIssue = document.getElementById("otherIssue");
-
-    if (otherIssue) {
+    if (otherIssue && charCount) {
 
         otherIssue.addEventListener("input", function () {
 
-            const count = document.getElementById("charCount");
-
-            if (count) {
-                count.innerHTML = this.value.length + " / 200";
-            }
+            charCount.textContent =
+                this.value.length + " / 200";
 
         });
 
@@ -70,46 +89,40 @@ window.onload = () => {
 
 };
 
-/* ------------------------------
-   Select Issue
------------------------------- */
+/* ==========================================
+   SELECT ISSUE
+========================================== */
 
 function selectIssue(button, issue) {
 
     selectedIssue = issue;
 
     document.querySelectorAll(".opt").forEach(btn => {
+
         btn.classList.remove("active");
+
     });
 
     button.classList.add("active");
 
-    const sendBtn = document.getElementById("sendBtn");
-
     sendBtn.disabled = false;
     sendBtn.classList.add("active");
 
-    // Other Issue Textbox
+    if (issue === "Other Issue") {
 
-    const box = document.getElementById("otherIssue");
+        otherIssue.style.display = "block";
+        otherIssue.focus();
 
-    if (box) {
+    }
 
-        if (issue === "Other Issue") {
+    else {
 
-            box.style.display = "block";
-            box.focus();
+        otherIssue.style.display = "none";
+        otherIssue.value = "";
 
-        } else {
+        if (charCount) {
 
-            box.style.display = "none";
-            box.value = "";
-
-            const count = document.getElementById("charCount");
-
-            if (count) {
-                count.innerHTML = "0 / 200";
-            }
+            charCount.textContent = "0 / 200";
 
         }
 
@@ -117,9 +130,35 @@ function selectIssue(button, issue) {
 
 }
 
-/* ------------------------------
-   Send Alert
------------------------------- */
+/* ==========================================
+   OPEN CONFIRM POPUP
+========================================== */
+
+function openConfirm(title, text, action) {
+
+    pendingAction = action;
+
+    document.querySelector("#confirmPopup h2").innerHTML = title;
+
+    document.querySelector("#confirmPopup p").innerHTML = text;
+
+    confirmPopup.classList.add("show");
+
+}
+
+/* ==========================================
+   CLOSE CONFIRM POPUP
+========================================== */
+
+function closeConfirm() {
+
+    confirmPopup.classList.remove("show");
+
+}
+
+/* ==========================================
+   SEND ALERT
+========================================== */
 
 function sendAlert() {
 
@@ -128,131 +167,129 @@ function sendAlert() {
         return;
     }
 
-    if (selectedIssue === "Other Issue") {
-
-        const txt = document.getElementById("otherIssue").value.trim();
-
-        if (txt === "") {
-            alert("Please describe the issue.");
-            return;
-        }
+    if (
+        selectedIssue === "Other Issue" &&
+        otherIssue.value.trim() === ""
+    ) {
+        alert("Please describe the issue.");
+        otherIssue.focus();
+        return;
     }
 
-    document.getElementById("confirmPopup").classList.add("show");
+    openConfirm(
+        "🚨 Confirm Alert",
+        "Are you sure you want to send this alert to the vehicle owner?",
+        "alert"
+    );
 
 }
 
-/* ------------------------------
-   Close Confirm
------------------------------- */
-
-function closeConfirm() {
-
-    document.getElementById("confirmPopup").classList.remove("show");
-
-}
-
-/* ------------------------------
-   Confirm Send
------------------------------- */
+/* ==========================================
+   CONFIRM BUTTON
+========================================== */
 
 function confirmSend() {
 
-    document.getElementById("confirmPopup").classList.remove("show");
+    closeConfirm();
 
-    document.getElementById("loadingOverlay").classList.add("show");
+    switch (pendingAction) {
 
-    const sendBtn = document.getElementById("sendBtn");
+        case "alert":
+            startAlertSending();
+            break;
+
+        case "call":
+            startCall();
+            break;
+
+        case "sms":
+            startSMS();
+            break;
+
+    }
+
+}
+
+/* ==========================================
+   START ALERT
+========================================== */
+
+function startAlertSending() {
+
+    loading.classList.add("show");
 
     sendBtn.disabled = true;
     sendBtn.classList.remove("active");
 
     setTimeout(() => {
 
-        document.getElementById("loadingOverlay").classList.remove("show");
+        loading.classList.remove("show");
 
         sendTelegram();
 
-    }, 2000);
+    }, 1800);
 
 }
-/* ------------------------------
-   Telegram
------------------------------- */
+
+/* ==========================================
+   TELEGRAM
+========================================== */
 
 function sendTelegram() {
-
-    // Custom Issue
 
     let issueText = selectedIssue;
 
     if (selectedIssue === "Other Issue") {
-
-        const txt = document.getElementById("otherIssue").value.trim();
-
-        if (txt === "") {
-
-            alert("Please describe the issue.");
-
-            const sendBtn = document.getElementById("sendBtn");
-
-            sendBtn.disabled = false;
-            sendBtn.classList.add("active");
-            sendBtn.innerHTML = "🚨 Send Alert";
-
-            return;
-
-        }
-
-        issueText = txt;
-
+        issueText = otherIssue.value.trim();
     }
 
-    const BOT_TOKEN = "8078122204:AAHFTan8c_tsAG1QZ3cdRk_tI33E9_hjybw";
-    const CHAT_ID = "2105892713";
+    // -----------------------------
+    // Telegram Configuration
+    // -----------------------------
 
-    const sendBtn = document.getElementById("sendBtn");
+    const BOT_TOKEN = "PASTE_YOUR_NEW_BOT_TOKEN";
+    const CHAT_ID = "PASTE_YOUR_CHAT_ID";
 
-    function sendTelegramMessage(lat, lon) {
+    // -----------------------------
 
-        const locationText = (lat && lon)
-            ? `📍 Sender Location\nhttps://maps.google.com/?q=${lat},${lon}`
-            : `📍 Sender Location\nPermission Denied`;
+    function sendMessage(lat, lon) {
 
-        const message = `🚨 VEHICLE ALERT
+        const location = lat && lon
+            ? `https://maps.google.com/?q=${lat},${lon}`
+            : "Permission Denied";
 
-👤 Owner: ${owner}
+        const message =
+`🚨 VEHICLE ALERT
 
-🚘 Vehicle: ${car}
+👤 Owner : ${owner}
 
-🚗 Number: ${number}
+🚘 Vehicle : ${car}
 
-⚠️ Issue: ${issueText}
+🚗 Number : ${number}
 
-${locationText}
+⚠️ Issue : ${issueText}
 
-🕒 Time: ${new Date().toLocaleString()}
+📍 Location
+${location}
 
-🌐 Vehicle Page:
-${window.location.href}
+🕒 ${new Date().toLocaleString()}
 
-━━━━━━━━━━━━━━━━━━
-📢 Sent via Vehicle Alert System`;
+🌐 ${window.location.href}`;
 
-        sendBtn.innerHTML = "🚨 Sending Alert...";
-
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-
-            body:
-                `chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}`
-
-        })
+        fetch(
+            `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type":
+                    "application/x-www-form-urlencoded"
+                },
+                body:
+                    "chat_id=" + CHAT_ID +
+                    "&text=" +
+                    encodeURIComponent(message)
+            }
+        )
 
         .then(res => res.json())
 
@@ -264,11 +301,10 @@ ${window.location.href}
 
             } else {
 
+                alert("Telegram Error");
+
                 sendBtn.disabled = false;
                 sendBtn.classList.add("active");
-                sendBtn.innerHTML = "🚨 Send Alert";
-
-                alert("Telegram Error : " + data.description);
 
             }
 
@@ -276,11 +312,10 @@ ${window.location.href}
 
         .catch(() => {
 
+            alert("Network Error");
+
             sendBtn.disabled = false;
             sendBtn.classList.add("active");
-            sendBtn.innerHTML = "🚨 Send Alert";
-
-            alert("Network Error");
 
         });
 
@@ -290,164 +325,290 @@ ${window.location.href}
 
         navigator.geolocation.getCurrentPosition(
 
-            function(position) {
+            pos => {
 
-                sendTelegramMessage(
-                    position.coords.latitude,
-                    position.coords.longitude
+                sendMessage(
+                    pos.coords.latitude,
+                    pos.coords.longitude
                 );
 
             },
 
-            function() {
+            () => {
 
-                sendTelegramMessage(null, null);
+                sendMessage(null, null);
 
             },
 
             {
                 enableHighAccuracy: true,
-                timeout: 8000,
-                maximumAge: 0
+                timeout: 8000
             }
 
         );
 
     } else {
 
-        sendTelegramMessage(null, null);
+        sendMessage(null, null);
 
     }
 
 }
-/* ------------------------------
-   Success Popup
------------------------------- */
+/* ==========================================
+   PART 3 / 4
+   CALL + SMS
+========================================== */
 
-function showSuccess() {
+/* ==========================================
+   CALL BUTTON
+========================================== */
 
-    const popup = document.getElementById("success");
+function callOwner() {
 
-    popup.classList.add("show");
-
-    const sendBtn = document.getElementById("sendBtn");
-
-    sendBtn.innerHTML = "✅ Alert Sent";
-    sendBtn.disabled = true;
-
-    // Reset after 3 seconds
-
-    setTimeout(() => {
-
-        popup.classList.remove("show");
-
-        // Reset Issue Buttons
-        document.querySelectorAll(".opt").forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        // Hide Other Issue Box
-        const box = document.getElementById("otherIssue");
-
-        if (box) {
-            box.style.display = "none";
-            box.value = "";
-        }
-
-        // Reset Counter
-        const count = document.getElementById("charCount");
-
-        if (count) {
-            count.innerHTML = "0 / 200";
-        }
-
-        // Reset Button
-        sendBtn.innerHTML = "🚨 Send Alert";
-        sendBtn.disabled = true;
-        sendBtn.classList.remove("active");
-
-        // Reset Selected Issue
-        selectedIssue = "";
-
-    }, 3000);
+    openConfirm(
+        "📞 Confirm Call",
+        "Are you sure you want to call the vehicle owner?",
+        "call"
+    );
 
 }
+
+/* ==========================================
+   SMS BUTTON
+========================================== */
 
 function sendSMS() {
 
-    pendingAction = "sms";
-
-    document.querySelector("#confirmPopup h2").innerHTML =
-        "💬 Confirm SMS";
-
-    document.querySelector("#confirmPopup p").innerHTML =
-        "Are you sure you want to send an SMS to the vehicle owner?";
-
-    document.getElementById("confirmPopup").classList.add("show");
+    openConfirm(
+        "💬 Confirm SMS",
+        "Are you sure you want to send an SMS to the vehicle owner?",
+        "sms"
+    );
 
 }
+
+/* ==========================================
+   DIRECT CALL
+========================================== */
+
+function startCall() {
+
+    if (!mobile) {
+
+        alert("Owner mobile number not found.");
+        return;
+
+    }
+
+    window.location.href = `tel:${mobile}`;
+
+}
+
+/* ==========================================
+   START SMS
+========================================== */
+
+function startSMS() {
+
+    if (!mobile) {
+
+        alert("Owner mobile number not found.");
+        return;
+
+    }
+
+    let issueText = selectedIssue;
+
+    if (selectedIssue === "Other Issue") {
+
+        issueText = otherIssue.value.trim();
+
+    }
 
     function openSMS(lat, lon) {
 
         const location =
+
             (lat && lon)
+
             ? `https://maps.google.com/?q=${lat},${lon}`
+
             : "Location Permission Denied";
 
         const message =
 
 `🚨 VEHICLE ALERT
 
-👤 Owner: ${owner}
+👤 Owner : ${owner}
 
-🚘 Vehicle: ${car}
+🚘 Vehicle : ${car}
 
-🚗 Number: ${number}
+🚗 Number : ${number}
 
-⚠️ Issue: ${issueText}
+⚠️ Issue : ${issueText}
 
-📍 Location:
+📍 Sender Location
 ${location}
 
-🕒 Time:
-${new Date().toLocaleString()}
+🕒 ${new Date().toLocaleString()}
 
-🌐 Vehicle Page:
+🌐 Vehicle Page
 ${window.location.href}
 
 ━━━━━━━━━━━━━━━━━━
 Sent via Vehicle Alert`;
 
         window.location.href =
-`sms:${mobile}?body=${encodeURIComponent(message)}`;
+            `sms:${mobile}?body=${encodeURIComponent(message)}`;
 
     }
 
+    if ("geolocation" in navigator) {
 
-function sendSMS() {
+        navigator.geolocation.getCurrentPosition(
 
-    pendingAction = "sms";
+            position => {
 
-    document.querySelector("#confirmPopup h2").innerHTML =
-        "💬 Confirm SMS";
+                openSMS(
+                    position.coords.latitude,
+                    position.coords.longitude
+                );
 
-    document.querySelector("#confirmPopup p").innerHTML =
-        "Are you sure you want to send an SMS to the vehicle owner?";
+            },
 
-    document.getElementById("confirmPopup").classList.add("show");
+            () => {
+
+                openSMS(null, null);
+
+            },
+
+            {
+
+                enableHighAccuracy: true,
+                timeout: 8000,
+                maximumAge: 0
+
+            }
+
+        );
+
+    }
+
+    else {
+
+        openSMS(null, null);
+
+    }
+
+}
+/* ==========================================
+   PART 4 / 4
+   SUCCESS + RESET
+========================================== */
+
+/* ==========================================
+   SUCCESS POPUP
+========================================== */
+
+function showSuccess() {
+
+    success.classList.add("show");
+
+    sendBtn.innerHTML = "✅ Alert Sent";
+    sendBtn.disabled = true;
+
+    setTimeout(() => {
+
+        success.classList.remove("show");
+
+        resetForm();
+
+    }, 3000);
 
 }
 
-function callOwner() {
+/* ==========================================
+   RESET FORM
+========================================== */
 
-    pendingAction = "call";
+function resetForm() {
 
-    document.querySelector("#confirmPopup h2").innerHTML =
-        "📞 Confirm Call";
+    // Reset Selected Issue
+    selectedIssue = "";
+    pendingAction = "";
 
-    document.querySelector("#confirmPopup p").innerHTML =
-        "Are you sure you want to call the vehicle owner?";
+    // Reset Issue Buttons
+    document.querySelectorAll(".opt").forEach(btn => {
 
-    document.getElementById("confirmPopup").classList.add("show");
+        btn.classList.remove("active");
+
+    });
+
+    // Reset Other Issue
+    if (otherIssue) {
+
+        otherIssue.value = "";
+        otherIssue.style.display = "none";
+
+    }
+
+    // Reset Counter
+    if (charCount) {
+
+        charCount.textContent = "0 / 200";
+
+    }
+
+    // Reset Send Button
+    sendBtn.disabled = true;
+    sendBtn.classList.remove("active");
+    sendBtn.innerHTML = "🚨 Send Alert";
 
 }
+
+/* ==========================================
+   CLOSE POPUPS ON OUTSIDE CLICK
+========================================== */
+
+window.addEventListener("click", function (e) {
+
+    if (e.target === confirmPopup) {
+
+        closeConfirm();
+
+    }
+
+});
+
+/* ==========================================
+   ESC KEY SUPPORT
+========================================== */
+
+document.addEventListener("keydown", function (e) {
+
+    if (e.key === "Escape") {
+
+        closeConfirm();
+
+    }
+
+});
+
+/* ==========================================
+   PREVENT DOUBLE CLICK
+========================================== */
+
+sendBtn.addEventListener("dblclick", function (e) {
+
+    e.preventDefault();
+
+});
+
+/* ==========================================
+   END OF SCRIPT
+========================================== */
+
+console.log(
+    "%cVehicle Alert v4.0 Loaded Successfully",
+    "color:#2563eb;font-size:15px;font-weight:bold;"
+);
