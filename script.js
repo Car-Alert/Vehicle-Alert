@@ -246,7 +246,7 @@ function sendTelegram() {
     // Telegram Configuration
     // -----------------------------
 
-    const BOT_TOKEN = ""8078122204:AAHFTan8c_tsAG1QZ3cdRk_tI33E9_hjybw";";
+    const BOT_TOKEN = "8078122204:AAHFTan8c_tsAG1QZ3cdRk_tI33E9_hjybw";
     const CHAT_ID = "2105892713";
 
     // -----------------------------
