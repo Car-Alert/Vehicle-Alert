@@ -423,40 +423,21 @@ Sent via Vehicle Alert`;
 
     }
 
-    if ("geolocation" in navigator) {
 
-        navigator.geolocation.getCurrentPosition(
+function sendSMS() {
 
-            function(position){
+    pendingAction = "sms";
 
-                openSMS(
-                    position.coords.latitude,
-                    position.coords.longitude
-                );
+    document.querySelector("#confirmPopup h2").innerHTML =
+        "💬 Confirm SMS";
 
-            },
+    document.querySelector("#confirmPopup p").innerHTML =
+        "Are you sure you want to send an SMS to the vehicle owner?";
 
-            function(){
-
-                openSMS(null, null);
-
-            },
-
-            {
-                enableHighAccuracy:true,
-                timeout:8000,
-                maximumAge:0
-            }
-
-        );
-
-    } else {
-
-        openSMS(null, null);
-
-    }
+    document.getElementById("confirmPopup").classList.add("show");
 
 }
+
 function callOwner() {
 
     pendingAction = "call";
