@@ -1,7 +1,6 @@
 /* ==========================================
    VEHICLE ALERT v4.0
    PREMIUM SCRIPT
-   PART 1 / 4
 ========================================== */
 
 "use strict";
@@ -247,8 +246,8 @@ function sendTelegram() {
     // Telegram Configuration
     // -----------------------------
 
-    const BOT_TOKEN = "PASTE_YOUR_NEW_BOT_TOKEN";
-    const CHAT_ID = "PASTE_YOUR_CHAT_ID";
+    const BOT_TOKEN = ""8078122204:AAHFTan8c_tsAG1QZ3cdRk_tI33E9_hjybw";";
+    const CHAT_ID = "2105892713";
 
     // -----------------------------
 
