@@ -1411,18 +1411,29 @@ transform:scale(1);
 
 .popup-close{
 
-position:absolute;
-right:16px;
-top:16px;
+width:34px;
+height:34px;
 
-border:none;
-background:none;
+border-radius:50%;
 
-font-size:20px;
+background:#f3f4f6;
 
-cursor:pointer;
+display:flex;
 
-opacity:.45;
+align-items:center;
+justify-content:center;
+
+transition:.2s;
+
+opacity:1;
+
+}
+
+.popup-close:hover{
+
+background:#e5e7eb;
+
+transform:rotate(90deg);
 
 }
 
