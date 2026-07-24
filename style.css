@@ -1297,6 +1297,7 @@ body{
     padding:30px;
     text-align:center;
     animation:popup .3s ease;
+    border-top:5px solid #2563eb;
 }
 
 .loader-logo{
