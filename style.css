@@ -1295,9 +1295,16 @@ body{
 }
 
 .loader-logo{
-    width:80px;
-    height:80px;
-    margin:auto auto 18px;
+
+    width:90px;
+    height:90px;
+
+    object-fit:contain;
+
+    display:block;
+
+    margin:0 auto 20px;
+
 }
 
 .loader-spinner{
@@ -1379,7 +1386,26 @@ transition:.35s cubic-bezier(.2,.8,.2,1);
 
 .popup-overlay.show .popup-card{
 
+    animation:popupBounce .35s ease forwards;
+
+}
+
+@keyframes popupBounce{
+
+0%{
+opacity:0;
+transform:scale(.82);
+}
+
+60%{
+opacity:1;
+transform:scale(1.03);
+}
+
+100%{
+opacity:1;
 transform:scale(1);
+}
 
 }
 
