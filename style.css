@@ -511,7 +511,10 @@ h1{
 
     animation:pop .25s ease;
 
+border-top:5px solid #22c55e;
+
 }
+
 
 .success-card h2{
 
