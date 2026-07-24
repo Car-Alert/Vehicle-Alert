@@ -244,33 +244,37 @@ Privacy • Anonymous • Instant
 <!-- =========================
      Confirmation Popup
 ========================== -->
+<div id="confirmPopup" class="popup-overlay">
 
-<div id="confirmPopup">
+    <div class="popup-card">
 
-    <div class="confirm-card">
+        <button class="popup-close"
+                onclick="closeConfirm()">
+            ✕
+        </button>
 
-        <h2>⚠️ Confirm Alert</h2>
+        <div class="popup-icon">
+            🚨
+        </div>
+
+        <h2>Confirm Alert</h2>
 
         <p>
             Are you sure you want to notify the vehicle owner?
         </p>
 
-        <div class="confirm-buttons">
+        <div class="popup-buttons">
 
             <button
-            id="cancelBtn"
-            onclick="closeConfirm()">
-
+                class="cancel-btn"
+                onclick="closeConfirm()">
                 Cancel
-
             </button>
 
             <button
-            id="confirmBtn"
-            onclick="confirmSend()">
-
-                Send Alert
-
+                class="confirm-btn"
+                onclick="confirmSend()">
+                🚨 Send Alert
             </button>
 
         </div>
