@@ -378,11 +378,20 @@ function callOwner() {
 
 function sendSMS() {
 
-    let issueText = selectedIssue;
+    if (selectedIssue === "") {
+        alert("Please select an issue.");
+        return;
+    }
 
-    if (selectedIssue === "Other Issue") {
-        issueText = otherIssue.value.trim();
-}
+    if (
+        selectedIssue === "Other Issue" &&
+        otherIssue.value.trim() === ""
+    ) 
+{
+        alert("Please describe the issue.");
+        otherIssue.focus();
+        return;
+    }
     openConfirm(
         "💬 Confirm SMS",
         "Are you sure you want to send an SMS to the vehicle owner?",
