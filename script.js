@@ -382,7 +382,7 @@ function sendSMS() {
 
     if (selectedIssue === "Other Issue") {
         issueText = otherIssue.value.trim();
-
+}
     openConfirm(
         "💬 Confirm SMS",
         "Are you sure you want to send an SMS to the vehicle owner?",
