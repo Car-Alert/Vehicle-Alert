@@ -385,8 +385,7 @@ function sendSMS() {
 
     if (
         selectedIssue === "Other Issue" &&
-        otherIssue.value.trim() === ""
-    ) 
+        otherIssue.value.trim() === "")
 {
         alert("Please describe the issue.");
         otherIssue.focus();
