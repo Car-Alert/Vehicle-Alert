@@ -648,6 +648,7 @@ select:focus{
 
 }
 
+
 .va-qr-box{
 
     width:200px;
@@ -662,7 +663,15 @@ select:focus{
 
     border-radius:18px;
 
-    padding:12px;
+    padding:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
 
 }
 
@@ -673,6 +682,13 @@ select:focus{
     height:100%;
 
     object-fit:contain;
+
+    display:block;
+
+    transform:translateY(8px);
+
+}
+    
 
 }
 
