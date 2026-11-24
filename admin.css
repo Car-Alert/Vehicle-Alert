@@ -675,18 +675,14 @@ select:focus{
 
 }
 
-#vaStickerQR{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:contain;
-
-    display:block;
-
-    transform:translateY(25px);
-
+#vaStickerQR {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    display: block;
+    position: relative !important;
+    top: 20px !important;
+    transform: none !important;
 }
     
 
